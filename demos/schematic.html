@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mermaid Schematic Diagram Demo</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=" />
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Schematic Diagram Demo</h1>
+    <p>This demo showcases the new schematic diagram type in Mermaid.</p>
+
+    <pre class="mermaid">
+schematic LR
+    subgraph main["Main Circuit"]
+        title_block(
+            title: "Basic Amplifier",
+            date: "2026-01-27",
+            rev: "V1.0",
+            company: "Demo Corp"
+        )
+    end
+    </pre>
+
+    <script type="module">
+      import mermaid from './mermaid.esm.mjs';
+      mermaid.initialize({
+        startOnLoad: true,
+        logLevel: 'debug',
+        schematic: {
+          padding: 20,
+        },
+      });
+    </script>
+  </body>
+</html>
