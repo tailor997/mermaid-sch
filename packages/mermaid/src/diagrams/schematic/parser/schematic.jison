@@ -15,7 +15,8 @@
 
 %%
 
-\s*\%\%.*          {yy.getLogger().trace('Found comment',yytext); return 'SPACELINE';}
+[ \t]*\%\%.*       {yy.getLogger().trace('Found comment',yytext); return 'SPACELINE';}
+[ \t]*\#.*         {yy.getLogger().trace('Found comment',yytext); return 'SPACELINE';}
 "schematic"         return 'SCHEMATIC';
 "LR"                return 'LR';
 "TB"                return 'TB';
@@ -37,6 +38,7 @@
 "value"              return 'VALUE';
 "id"                 return 'ID';
 
+"(--)"              return 'DOUBLE_ARROW';
 "["                 return 'LBRACK';
 "]"                 return 'RBRACK';
 "("                 return 'LPAREN';
@@ -51,15 +53,14 @@
 "="                 return 'EQUALS';
 "<--"               return 'LEFT_ARROW';
 "-->"               return 'RIGHT_ARROW';
-"<-->"              return 'DOUBLE_ARROW';
 
 "page_setting"       { this.begin('PAGE_SETTING'); return 'PAGE_SETTING'; }
 "title_block"        { this.begin('TITLE_BLOCK'); return 'TITLE_BLOCK'; }
 
 <PAGE_SETTING,TITLE_BLOCK>\s+         /* skip whitespace */
 <PAGE_SETTING,TITLE_BLOCK>\n+         /* skip newlines */
-<PAGE_SETTING,TITLE_BLOCK>"("         return 'LPAREN';
-<PAGE_SETTING,TITLE_BLOCK>")"         { this.popState(); return 'RPAREN'; }
+<PAGE_SETTING,TITLE_BLOCK>"{"         return 'LCURLY';
+<PAGE_SETTING,TITLE_BLOCK>"}"         { this.popState(); return 'RCURLY'; }
 <PAGE_SETTING,TITLE_BLOCK>","         return 'COMMA';
 <PAGE_SETTING,TITLE_BLOCK>":"         return 'COLON';
 <PAGE_SETTING,TITLE_BLOCK>"\""[^"]*"\"" { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
@@ -68,6 +69,8 @@
 <PAGE_SETTING>"paper"      return 'PAPER';
 <PAGE_SETTING>"scale"      return 'SCALE';
 <PAGE_SETTING>"dpi"        return 'DPI';
+<PAGE_SETTING>"width"      return 'WIDTH';
+<PAGE_SETTING>"height"     return 'HEIGHT';
 
 <TITLE_BLOCK>"title"       return 'TITLE';
 <TITLE_BLOCK>"date"        return 'DATE';
@@ -77,10 +80,10 @@
 
 <PAGE_SETTING,TITLE_BLOCK>[a-zA-Z0-9_\-\.]+ return 'IDENTIFIER';
 
-[ \t]+              /* skip whitespace */
+[ \t\r]+              /* skip whitespace */
 \n+                 return 'NL';
 
-[a-zA-Z0-9_\-]+      return 'IDENTIFIER';
+[a-zA-Z0-9_\-\+]+      return 'IDENTIFIER';
 "\""[^"]*"\""      { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
 "'[^']+'"            { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
 <<EOF>>              return 'EOF';
@@ -104,21 +107,77 @@ layout_opt
   ;
 
 document
-  : document statement NL
-  | statement NL
-  | document NL
-  | NL
+  : document statement
+  | statement
   ;
 
 statement
   : subgraph
   | page_setting
   | title_block
+  | component_instantiation
+  | connection
+  | SPACELINE
+  | NL
+  ;
+
+connection
+  : connectable DOUBLE_ARROW connectable {
+      var source = $1;
+      var target = $3;
+      yy.addConnection(source.id, target.id, source.pin, target.pin);
+      $$ = target;
+    }
+  | connectable DOUBLE_ARROW connection {
+      var source = $1;
+      var target = $3;
+      yy.addConnection(source.id, target.id, source.pin, target.pin);
+      $$ = source;
+    }
+  ;
+
+connectable
+  : LPAREN IDENTIFIER RPAREN { $$ = { id: $2, pin: undefined }; }
+  | LBRACK IDENTIFIER RBRACK { $$ = { id: $2, pin: undefined }; }
+  | LBRACK IDENTIFIER RBRACK DOT LPAREN IDENTIFIER RPAREN { $$ = { id: $2, pin: $6 }; }
+  | LPAREN IDENTIFIER RPAREN DOT LBRACK IDENTIFIER RBRACK { $$ = { id: $6, pin: $2 }; }
+  ;
+
+component_instantiation
+  : LBRACK IDENTIFIER IDENTIFIER RBRACK attributes_opt {
+      yy.addSymbol({ name: $2, id: $3, pinGroups: [], electrical: $5 });
+  }
+  ;
+
+attributes_opt
+  : /* empty */ { $$ = {}; }
+  | LCURLY attributes RCURLY { $$ = $2; }
+  ;
+
+attributes
+  : attribute { $$ = $1; }
+  | attributes COMMA attribute { $$ = Object.assign({}, $1, $3); }
+  ;
+
+attribute
+  : IDENTIFIER COLON attribute_value { 
+      var val = $3;
+      if (!isNaN(Number(val))) {
+        val = Number(val);
+      }
+      var obj = {};
+      obj[$1] = val;
+      $$ = obj;
+    }
+  ;
+
+attribute_value
+  : STRING
+  | IDENTIFIER
   ;
 
 subgraph
-  : subgraph_head NL document END
-  | subgraph_head statement END
+  : subgraph_head document END
   ;
 
 subgraph_head
@@ -126,7 +185,7 @@ subgraph_head
   ;
 
 page_setting
-  : PAGE_SETTING LPAREN page_setting_items RPAREN { 
+  : PAGE_SETTING LCURLY page_setting_items RCURLY { 
       yy.setPageSetting($3); 
     }
   ;
@@ -149,6 +208,12 @@ page_setting_item
   | DPI COLON page_setting_value { 
       $$ = { dpi: parseInt($3) }; 
     }
+  | WIDTH COLON page_setting_value { 
+      $$ = { width: parseInt($3) }; 
+    }
+  | HEIGHT COLON page_setting_value { 
+      $$ = { height: parseInt($3) }; 
+    }
   ;
 
 page_setting_value
@@ -157,7 +222,7 @@ page_setting_value
   ;
 
 title_block
-  : TITLE_BLOCK LPAREN title_block_items RPAREN { 
+  : TITLE_BLOCK LCURLY title_block_items RCURLY { 
       yy.setTitleBlock($3); 
     }
   ;

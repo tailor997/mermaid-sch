@@ -32,12 +32,43 @@
     <pre class="mermaid">
 schematic LR
     subgraph main["Main Circuit"]
-        title_block(
+        title_block{
             title: "Basic Amplifier",
             date: "2026-01-27",
             rev: "V1.0",
             company: "Demo Corp"
-        )
+        }
+        
+        [resistor R1]{label: "10k", rotation: 0}
+        [resistor R2]{label: "220R", rotation: 90}
+        [capacitor C1]{label: "100uF", rotation: 0}
+        [capacitor C2]{label: "10nF", rotation: 90}
+        [resistor R3]{label: "4.7k", rotation: 0}
+
+        %% (0).[C1].(1)
+    end
+    </pre>
+
+    <pre class="mermaid">
+schematic LR
+    subgraph main["RC Low Pass & LC Resonant"]
+        page_setting{width: 500, height: 400}
+        title_block{
+            title: "Basic Circuits",
+            date: "2026-01-28",
+            company: "Demo Corp"
+        }
+        
+        # RC Low Pass Filter
+        [resistor R1]{label: "1k", rotation: 0}
+        [capacitor C1]{label: "10uF", rotation: 90}
+        
+        (Ui+) (--) (0).[R1]
+                        [R1].(1) (--) (Uo+)
+                        [R1].(1) (--) [C1].(0)
+        (Ui-) (--)      (1).[C1]
+                        [C1].(1) (--) (Uo-) 
+
     end
     </pre>
 

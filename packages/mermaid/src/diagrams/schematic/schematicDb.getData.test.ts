@@ -30,20 +30,20 @@ describe('SchematicDB getData function', () => {
     it('should parse meta-data subgraph with page_setting and title_block', () => {
       const input = `schematic LR
     subgraph meta-data["Page 1: 架构"]
-        page_setting(
+        page_setting{
             paper: A4,
             paper-dir: landscape,
             scale: 1.0,
             dpi: 300
-        )
+        }
         
-        title_block(
+        title_block{
             title: "STM32F103C8T6最小系统",
             date: "2026-01-20",
             rev: "V1.0",
             company: "示例科技有限公司",
             comment: "基于mermaid语法的原理图设计"
-        )
+        }
     end
 `;
 
@@ -75,9 +75,9 @@ describe('SchematicDB getData function', () => {
     it('should parse simplified page_setting', () => {
       const input = `schematic LR
     subgraph page1["Simple Page"]
-        page_setting(
+        page_setting{
             paper: A3
-        )
+        }
     end
 `;
 

@@ -1,4 +1,5 @@
 import { getConfig } from '../../diagram-api/diagramAPI.js';
+import { log } from '../../logger.js';
 import { v4 } from 'uuid';
 import type { LayoutData, Node, Edge } from '../../rendering-util/types.js';
 import { getUserDefinedConfig } from '../../config.js';
@@ -9,6 +10,7 @@ export interface TitleBlock {
   date?: string;
   rev?: string;
   company?: string;
+  comment?: string;
 }
 
 export interface PageSetting {
@@ -16,6 +18,23 @@ export interface PageSetting {
   width?: number;
   height?: number;
   orientation?: 'landscape' | 'portrait';
+  paperDir?: 'landscape' | 'portrait';
+  scale?: number;
+  dpi?: number;
+}
+
+export interface SchematicConnection {
+  id: string;
+  source: {
+    id: string;
+    pin?: string;
+    isPin: boolean;
+  };
+  target: {
+    id: string;
+    pin?: string;
+    isPin: boolean;
+  };
 }
 
 export interface SchematicPage {
@@ -24,6 +43,7 @@ export interface SchematicPage {
   titleBlock?: TitleBlock;
   pageSetting?: PageSetting;
   symbols: SchematicSymbol[];
+  connections: SchematicConnection[];
 }
 
 export interface SchematicSymbolPin {
@@ -57,6 +77,12 @@ export interface SchematicDBData {
   config: unknown;
 }
 
+export type SchematicLayoutData = LayoutData & {
+  schematicData: {
+    pages: SchematicPage[];
+  };
+};
+
 export class SchematicDB {
   private pages: SchematicPage[] = [];
   private currentPage: SchematicPage | null = null;
@@ -65,9 +91,16 @@ export class SchematicDB {
   constructor() {
     this.clear();
     this.addPage = this.addPage.bind(this);
+    this.addSymbol = this.addSymbol.bind(this);
+    this.addConnection = this.addConnection.bind(this);
     this.setPageSetting = this.setPageSetting.bind(this);
     this.setTitleBlock = this.setTitleBlock.bind(this);
     this.getData = this.getData.bind(this);
+    this.getLogger = this.getLogger.bind(this);
+  }
+
+  public getLogger() {
+    return log;
   }
 
   public clear(): void {
@@ -81,9 +114,40 @@ export class SchematicDB {
       id,
       name,
       symbols: [],
+      connections: [],
     };
     this.pages.push(page);
     this.currentPage = page;
+  }
+
+  public addSymbol(symbol: SchematicSymbol): void {
+    if (this.currentPage) {
+      this.currentPage.symbols.push(symbol);
+    }
+  }
+
+  public addConnection(
+    source: string,
+    target: string,
+    sourcePin?: string,
+    targetPin?: string
+  ): void {
+    if (this.currentPage) {
+      const connection: SchematicConnection = {
+        id: v4(),
+        source: {
+          id: source,
+          pin: sourcePin,
+          isPin: !!sourcePin,
+        },
+        target: {
+          id: target,
+          pin: targetPin,
+          isPin: !!targetPin,
+        },
+      };
+      this.currentPage.connections.push(connection);
+    }
   }
 
   public setPageSetting(setting: PageSetting): void {
@@ -98,7 +162,7 @@ export class SchematicDB {
     }
   }
 
-  public getData(): LayoutData {
+  public getData(): SchematicLayoutData {
     const config = getConfig();
     const userDefinedConfig = getUserDefinedConfig();
     const hasUserDefinedLayout = userDefinedConfig.layout !== undefined;

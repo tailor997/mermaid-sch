@@ -3,11 +3,11 @@ import { select, type Selection, type BaseType } from 'd3';
 import { drawResistor, drawCapacitor } from './index.js';
 
 describe('Schematic Components', () => {
-  let g: Selection<SVGGElement, unknown, BaseType, any>;
+  let g: Selection<SVGGElement, unknown, BaseType, unknown>;
 
   beforeEach(() => {
     document.body.innerHTML = '<svg><g id="test-group"></g></svg>';
-    g = select('#test-group') as Selection<SVGGElement, unknown, BaseType, any>;
+    g = select('#test-group') as Selection<SVGGElement, unknown, BaseType, unknown>;
   });
 
   it('should draw a resistor', () => {

@@ -1,13 +1,74 @@
 import type { DrawDefinition } from '../../diagram-api/types.js';
 import { log } from '../../logger.js';
 import { select } from 'd3';
-import type { SchematicDB } from './schematicDb.js';
-import { drawResistor, drawCapacitor } from './components/index.js';
-import { drawRect, drawText } from './elements/index.js';
+import type {
+  SchematicDB,
+  PageSetting,
+  SchematicLayoutData,
+  SchematicPage,
+  SchematicConnection,
+  SchematicSymbol,
+} from './schematicDb.js';
+import { drawResistor, drawCapacitor, drawInductor } from './components/index.js';
+import { drawRect, drawText, drawLine } from './elements/index.js';
 import { setupViewPortForSVG } from '../../rendering-util/setupViewPortForSVG.js';
+import type { MermaidConfig } from '../../config.type.js';
+
+interface SchematicConfig extends MermaidConfig {
+  schematic?: {
+    padding?: number;
+  };
+}
+
+interface DemoComponent {
+  type: string;
+  name: string;
+  label: string;
+  rotation: number;
+  x?: number;
+  y?: number;
+}
+
+const paperSizes: Record<string, { width: number; height: number }> = {
+  A4: { width: 297, height: 210 },
+  A3: { width: 420, height: 297 },
+  A2: { width: 594, height: 420 },
+  A1: { width: 841, height: 594 },
+  A0: { width: 1189, height: 841 },
+};
+
+const MM_TO_PX = 3.78; // 96 DPI: 1 mm = 3.78 px
+
+const getPageDimensions = (pageSetting?: PageSetting) => {
+  let width = paperSizes.A4.width;
+  let height = paperSizes.A4.height;
+
+  if (pageSetting?.paper && paperSizes[pageSetting.paper.toUpperCase()]) {
+    const size = paperSizes[pageSetting.paper.toUpperCase()];
+    width = size.width;
+    height = size.height;
+  }
+
+  if (pageSetting?.width) {
+    width = pageSetting.width;
+  }
+  if (pageSetting?.height) {
+    height = pageSetting.height;
+  }
+
+  // Handle orientation
+  const isLandscape = pageSetting?.orientation !== 'portrait'; // Default to landscape
+  if ((isLandscape && height > width) || (!isLandscape && width > height)) {
+    const temp = width;
+    width = height;
+    height = temp;
+  }
+
+  return { width: width * MM_TO_PX, height: height * MM_TO_PX };
+};
 
 // Simple auto layout function
-const autoLayout = (components: any[], startX: number, startY: number) => {
+const autoLayout = (components: DemoComponent[], startX: number, startY: number) => {
   let x = startX;
   let y = startY;
   const gap = 120;
@@ -27,13 +88,10 @@ const autoLayout = (components: any[], startX: number, startY: number) => {
 export const draw: DrawDefinition = (text, id, _version, diagObj) => {
   log.info('Drawing schematic diagram');
   const db = diagObj.db as SchematicDB;
-  const data = db.getData();
+  const data = db.getData() as SchematicLayoutData;
   const schematicData = data.schematicData;
 
   // Select SVG
-  // In Mermaid, 'id' passed here is usually the ID of the container div or svg
-  // The 'svg' element is usually created by the caller or we select it.
-  // Standard pattern: select(`[id="${id}"]`)
   const svg = select(`[id="${id}"]`);
 
   // Clear existing
@@ -41,58 +99,231 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
 
   const g = svg.append('g').attr('class', 'schematic-root');
 
-  let currentY = 50;
+  let currentY = 0;
+  const pageGap = 50;
 
-  // Draw Pages (Title Blocks)
-  if (schematicData.pages) {
-    schematicData.pages.forEach((page) => {
-      // Draw Title Block Frame
+  // Draw Pages
+  if (schematicData.pages?.length > 0) {
+    schematicData.pages.forEach((page: SchematicPage) => {
+      const { width, height } = getPageDimensions(page.pageSetting);
+
+      const pageGroup = g
+        .append('g')
+        .attr('class', `page-group page-${page.id}`)
+        .attr('transform', `translate(0, ${currentY})`);
+
+      // Draw Page Border (Paper)
+      drawRect(pageGroup, 0, 0, width, height, {
+        stroke: 'black',
+        strokeWidth: 2,
+        fill: 'white',
+        className: 'page-border',
+      });
+
+      // Draw Title Block if exists
       if (page.titleBlock) {
-        const titleGroup = g.append('g').attr('class', 'title-block');
-        drawRect(titleGroup, 10, currentY, 400, 80, { stroke: 'black', fill: 'none' });
-        drawText(titleGroup, `Title: ${page.titleBlock.title ?? ''}`, 20, currentY + 30, {
-          fontSize: 16,
+        // Standard Title Block Size (approx 160mm x 60mm converted to px)
+        const tbWidth = 160 * MM_TO_PX;
+        const tbHeight = 60 * MM_TO_PX;
+
+        // Position at bottom right
+        const tbX = width - tbWidth;
+        const tbY = height - tbHeight;
+
+        const titleGroup = pageGroup
+          .append('g')
+          .attr('class', 'title-block')
+          .attr('transform', `translate(${tbX}, ${tbY})`);
+
+        // Outer border of title block
+        drawRect(titleGroup, 0, 0, tbWidth, tbHeight, {
+          stroke: 'black',
+          strokeWidth: 1,
+          fill: 'none',
         });
-        drawText(titleGroup, `Date: ${page.titleBlock.date ?? ''}`, 20, currentY + 60, {
+
+        // Inner lines for layout
+        // Horizontal line splitting title and details
+        const splitY = tbHeight * 0.6;
+        drawLine(titleGroup, { x: 0, y: splitY }, { x: tbWidth, y: splitY }, { stroke: 'black' });
+
+        // Vertical lines for details
+        const colWidth = tbWidth / 3;
+        drawLine(
+          titleGroup,
+          { x: colWidth, y: splitY },
+          { x: colWidth, y: tbHeight },
+          { stroke: 'black' }
+        );
+        drawLine(
+          titleGroup,
+          { x: colWidth * 2, y: splitY },
+          { x: colWidth * 2, y: tbHeight },
+          { stroke: 'black' }
+        );
+
+        // Title
+        drawText(titleGroup, 'Title:', 10, 20, { fontSize: 10, fill: '#666' });
+        drawText(titleGroup, page.titleBlock.title ?? 'Untitled', 10, 45, {
+          fontSize: 24,
+          textAnchor: 'start',
+        });
+
+        // Company
+        drawText(titleGroup, 'Company:', 10, splitY + 15, { fontSize: 10, fill: '#666' });
+        drawText(titleGroup, page.titleBlock.company ?? '', 10, splitY + 30, { fontSize: 12 });
+
+        // Date
+        drawText(titleGroup, 'Date:', colWidth + 10, splitY + 15, { fontSize: 10, fill: '#666' });
+        drawText(titleGroup, page.titleBlock.date ?? '', colWidth + 10, splitY + 30, {
           fontSize: 12,
         });
-        currentY += 100;
+
+        // Rev
+        drawText(titleGroup, 'Rev:', colWidth * 2 + 10, splitY + 15, {
+          fontSize: 10,
+          fill: '#666',
+        });
+        drawText(titleGroup, page.titleBlock.rev ?? '', colWidth * 2 + 10, splitY + 30, {
+          fontSize: 12,
+        });
+      }
+
+      currentY += height + pageGap;
+    });
+  } else {
+    // Default page if no pages defined
+    const { width, height } = getPageDimensions();
+    drawRect(g, 0, 0, width, height, { stroke: 'black', strokeWidth: 2, fill: 'white' });
+  }
+
+  // Render Symbols from Page Data
+  if (schematicData.pages?.length > 0) {
+    schematicData.pages.forEach((page: SchematicPage) => {
+      // Find the page group
+      const pageGroup = g.select(`.page-group.page-${page.id}`);
+
+      if (page.symbols?.length > 0) {
+        // Map symbols to DemoComponent format for rendering
+        // In the future, we should unify the types
+        const components: DemoComponent[] = page.symbols.map((sym: SchematicSymbol) => {
+          return {
+            type: sym.name.toLowerCase(), // 'resistor' etc.
+            name: sym.id, // 'R1' etc.
+            label: (sym.electrical?.label as string) || (sym.electrical?.value as string) || '',
+            rotation: (sym.electrical?.rotation as number) || 0,
+            x: sym.electrical?.x as number,
+            y: sym.electrical?.y as number,
+          };
+        });
+
+        // Apply auto layout if positions are missing
+        // This is a simple heuristic: if any component lacks x or y, run auto layout on all
+        // (Better approach would be to only layout missing ones, but for now this is fine)
+        const needsLayout = components.some((c) => c.x === undefined || c.y === undefined);
+        if (needsLayout) {
+          autoLayout(components, 100, 100);
+        }
+
+        components.forEach((comp) => {
+          if (comp.x === undefined || comp.y === undefined) {
+            return;
+          }
+          if (comp.type === 'resistor') {
+            drawResistor(pageGroup, comp as Required<DemoComponent>);
+          } else if (comp.type === 'capacitor') {
+            drawCapacitor(pageGroup, comp as Required<DemoComponent>);
+          } else if (comp.type === 'inductor') {
+            drawInductor(pageGroup, comp as Required<DemoComponent>);
+          }
+        });
+
+        // Draw Connections
+        if (page.connections?.length > 0) {
+          const getComponent = (id: string) => components.find((c) => c.name === id);
+
+          // Helper to get pin coordinates
+          const getPinCoord = (
+            compId: string,
+            pin: string | undefined
+          ): { x: number; y: number } | null => {
+            const comp = getComponent(compId);
+            if (comp?.x === undefined || comp.y === undefined) {
+              return null;
+            }
+
+            // Default pin offsets for simple components (width=60, center at 0,0)
+            // Pin 0: left (-30, 0), Pin 1: right (30, 0)
+            // Rotation is applied around 0,0
+            const halfSize = 30;
+            let dx = 0;
+            const dy = 0;
+
+            if (pin === '0' || pin === 'left' || pin === 'in' || pin === 'negative') {
+              dx = -halfSize;
+            } else if (pin === '1' || pin === 'right' || pin === 'out' || pin === 'positive') {
+              dx = halfSize;
+            }
+
+            // Apply rotation
+            const rad = (comp.rotation * Math.PI) / 180;
+            const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
+            const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
+
+            return {
+              x: comp.x + rx,
+              y: comp.y + ry,
+            };
+          };
+
+          page.connections.forEach((conn: SchematicConnection) => {
+            // For now, only draw if both ends are components with valid pins
+            // If one end is a net label (isPin=false), we might skip or draw to label
+            if (conn.source.isPin && conn.target.isPin) {
+              const start = getPinCoord(conn.source.id, conn.source.pin);
+              const end = getPinCoord(conn.target.id, conn.target.pin);
+
+              if (start && end) {
+                drawLine(pageGroup, start, end, { stroke: 'black', strokeWidth: 1.5 });
+              }
+            } else if (!conn.source.isPin && conn.target.isPin) {
+              // Source is net label, Target is component pin
+              // Draw a stub and label
+              const end = getPinCoord(conn.target.id, conn.target.pin);
+              if (end) {
+                // Determine direction based on pin? For now just go left or up?
+                // A simple heuristic: extend in direction of pin normal
+                // But we don't know pin normal easily without checking pin number again.
+                // Let's just draw a small text at the pin location for the Net Name
+                drawText(pageGroup, conn.source.id, end.x, end.y - 10, {
+                  fontSize: 10,
+                  fill: 'blue',
+                  textAnchor: 'middle',
+                });
+              }
+            } else if (conn.source.isPin && !conn.target.isPin) {
+              // Source is component pin, Target is net label
+              const start = getPinCoord(conn.source.id, conn.source.pin);
+              if (start) {
+                drawText(pageGroup, conn.target.id, start.x, start.y - 10, {
+                  fontSize: 10,
+                  fill: 'blue',
+                  textAnchor: 'middle',
+                });
+              }
+            }
+          });
+        }
       }
     });
   }
 
-  // Draw Components
-  // Since the parser is not fully ready to parse components, we generate some demo components
-  // or use data from db if available (it is empty now based on previous reads)
-
-  // Demo Data for visualization
-  const demoComponents = [
-    { type: 'resistor', name: 'R1', label: '10k', rotation: 0 },
-    { type: 'resistor', name: 'R2', label: '220R', rotation: 90 },
-    { type: 'capacitor', name: 'C1', label: '100uF', rotation: 0 },
-    { type: 'capacitor', name: 'C2', label: '10nF', rotation: 90 },
-    { type: 'resistor', name: 'R3', label: '4.7k', rotation: 0 },
-  ];
-
-  // Apply Layout
-  autoLayout(demoComponents, 60, currentY + 50);
-
-  // Render
-  demoComponents.forEach((comp) => {
-    if (comp.type === 'resistor') {
-      drawResistor(g, comp);
-    } else if (comp.type === 'capacitor') {
-      drawCapacitor(g, comp);
-    }
-  });
-
   // Setup ViewPort
-  // We need to calculate bounding box
   try {
     // @ts-ignore: getBBox is missing in some d3 types or dom types in test env
     const bounds = g.node().getBBox();
-    setupViewPortForSVG(svg, data.config.schematic?.padding ?? 10, 'schematic', false);
-    // Adjust viewBox manually if needed or rely on setupViewPortForSVG
+    const config = data.config as SchematicConfig;
+    setupViewPortForSVG(svg as unknown as any, config.schematic?.padding ?? 10, 'schematic', false);
     svg.attr(
       'viewBox',
       `${bounds.x - 10} ${bounds.y - 10} ${bounds.width + 20} ${bounds.height + 20}`
