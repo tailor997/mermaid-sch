@@ -6,4 +6,5 @@ export interface ComponentProps {
   name?: string; // ID like "R1"
   size?: number; // Base length, default might be 60 or 100
   color?: string;
+  showPinHighlights?: boolean;
 }

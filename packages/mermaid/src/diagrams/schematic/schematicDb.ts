@@ -29,12 +29,15 @@ export interface SchematicConnection {
     id: string;
     pin?: string;
     isPin: boolean;
+    labelPosition?: { x: number; y: number };
   };
   target: {
     id: string;
     pin?: string;
     isPin: boolean;
+    labelPosition?: { x: number; y: number };
   };
+  points?: { x: number; y: number }[];
 }
 
 export interface SchematicPage {

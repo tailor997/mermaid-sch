@@ -15,7 +15,8 @@ export const drawCircle = (
     .attr('r', r)
     .attr('stroke', style.stroke ?? 'black')
     .attr('stroke-width', style.strokeWidth ?? 1)
-    .attr('fill', style.fill ?? 'none');
+    .attr('fill', style.fill ?? 'none')
+    .attr('fill-opacity', style.fillOpacity ?? 1);
 
   if (style.strokeDasharray) {
     circle.attr('stroke-dasharray', style.strokeDasharray);

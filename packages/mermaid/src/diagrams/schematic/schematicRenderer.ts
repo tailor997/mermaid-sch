@@ -4,21 +4,15 @@ import { select } from 'd3';
 import type {
   SchematicDB,
   PageSetting,
-  SchematicLayoutData,
   SchematicPage,
   SchematicConnection,
   SchematicSymbol,
 } from './schematicDb.js';
 import { drawResistor, drawCapacitor, drawInductor } from './components/index.js';
-import { drawRect, drawText, drawLine } from './elements/index.js';
+import { drawPinHighlight } from './components/pinHighlight.js';
+import { drawRect, drawText, drawLine, drawPolyline } from './elements/index.js';
 import { setupViewPortForSVG } from '../../rendering-util/setupViewPortForSVG.js';
-import type { MermaidConfig } from '../../config.type.js';
-
-interface SchematicConfig extends MermaidConfig {
-  schematic?: {
-    padding?: number;
-  };
-}
+import { layoutSchematic, type SchematicConfig } from './schematicLayout.js';
 
 interface DemoComponent {
   type: string;
@@ -27,6 +21,7 @@ interface DemoComponent {
   rotation: number;
   x?: number;
   y?: number;
+  showPinHighlights?: boolean;
 }
 
 const paperSizes: Record<string, { width: number; height: number }> = {
@@ -85,10 +80,14 @@ const autoLayout = (components: DemoComponent[], startX: number, startY: number)
   });
 };
 
-export const draw: DrawDefinition = (text, id, _version, diagObj) => {
+export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
   log.info('Drawing schematic diagram');
   const db = diagObj.db as SchematicDB;
-  const data = db.getData() as SchematicLayoutData;
+
+  const data = db.getData();
+  const config = data.config as SchematicConfig;
+  await layoutSchematic(db, config);
+
   const schematicData = data.schematicData;
 
   // Select SVG
@@ -214,6 +213,7 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
             rotation: (sym.electrical?.rotation as number) || 0,
             x: sym.electrical?.x as number,
             y: sym.electrical?.y as number,
+            showPinHighlights: config.schematic?.showPinHighlights,
           };
         });
 
@@ -240,6 +240,9 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
 
         // Draw Connections
         if (page.connections?.length > 0) {
+          const symbolMap = new Map<string, SchematicSymbol>();
+          page.symbols.forEach((s) => symbolMap.set(s.id, s));
+
           const getComponent = (id: string) => components.find((c) => c.name === id);
 
           // Helper to get pin coordinates
@@ -247,6 +250,49 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
             compId: string,
             pin: string | undefined
           ): { x: number; y: number } | null => {
+            // First try to get from ELK layout data
+            const sym = symbolMap.get(compId);
+            if (sym?.electrical?.pins && Array.isArray(sym.electrical.pins)) {
+              // Try to find the pin
+              // Normalized pin ID lookup could be tricky if pin names vary (0 vs left)
+              // But let's assume standard names first
+              const targetPin = pin;
+              if (!targetPin) {
+                // Default to pin 0 if not specified? Or center?
+                // If undefined, maybe we want center.
+              } else {
+                // Try exact match
+                let pinData = sym.electrical.pins.find((p: any) => p.id === targetPin);
+
+                // Try aliases if not found
+                if (!pinData) {
+                  let alias = targetPin;
+                  if (
+                    alias === 'left' ||
+                    alias === 'in' ||
+                    alias === 'negative' ||
+                    alias === 'anode'
+                  ) {
+                    alias = '0';
+                  } else if (
+                    alias === 'right' ||
+                    alias === 'out' ||
+                    alias === 'positive' ||
+                    alias === 'cathode'
+                  ) {
+                    alias = '1';
+                  }
+
+                  pinData = sym.electrical.pins.find((p: any) => p.id === alias);
+                }
+
+                if (pinData) {
+                  return { x: pinData.x, y: pinData.y };
+                }
+              }
+            }
+
+            // Fallback to old calculation logic
             const comp = getComponent(compId);
             if (comp?.x === undefined || comp.y === undefined) {
               return null;
@@ -255,14 +301,43 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
             // Default pin offsets for simple components (width=60, center at 0,0)
             // Pin 0: left (-30, 0), Pin 1: right (30, 0)
             // Rotation is applied around 0,0
+            // Note: Components are drawn centered at (0,0) in their group, then translated to comp.x, comp.y
+            // So comp.x, comp.y IS the center of the component in the page group.
+
             const halfSize = 30;
             let dx = 0;
             const dy = 0;
 
-            if (pin === '0' || pin === 'left' || pin === 'in' || pin === 'negative') {
+            // Normalize pin names to standard 0/1 for 2-pin components if possible
+            // or trust the pin ID if it matches 0/1 directly
+            let effectivePin = pin;
+
+            // Map common aliases
+            if (pin === 'left' || pin === 'in' || pin === 'negative' || pin === 'anode') {
+              effectivePin = '0';
+            } else if (
+              pin === 'right' ||
+              pin === 'out' ||
+              pin === 'positive' ||
+              pin === 'cathode'
+            ) {
+              effectivePin = '1';
+            }
+
+            if (effectivePin === '0') {
               dx = -halfSize;
-            } else if (pin === '1' || pin === 'right' || pin === 'out' || pin === 'positive') {
+            } else if (effectivePin === '1') {
               dx = halfSize;
+            } else {
+              // Fallback for unknown pins or if layout engine provided specific coords?
+              // For now, default to 0/1 behavior if not specified, or center if completely unknown
+              // But wait, we have pin definitions in the symbol, we should use those if available!
+              // However, `components` array here is `DemoComponent` which is simplified.
+              // We should probably look up the original symbol if we want exact coords.
+              // For now, the hardcoded +/- 30 works for Resistor/Capacitor/Inductor.
+              if (!pin) {
+                return { x: comp.x, y: comp.y }; // Center fallback
+              }
             }
 
             // Apply rotation
@@ -277,6 +352,46 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
           };
 
           page.connections.forEach((conn: SchematicConnection) => {
+            // If connection has pre-calculated points from layout, use them
+            if (conn.points && conn.points.length > 0) {
+              drawPolyline(pageGroup, conn.points, {
+                stroke: 'rgb(0,0,255)',
+                strokeWidth: 1,
+                fill: 'none',
+              });
+
+              // Draw Net Labels if positions are available from layout
+              if (conn.source.labelPosition) {
+                drawText(
+                  pageGroup,
+                  conn.source.id,
+                  conn.source.labelPosition.x,
+                  conn.source.labelPosition.y,
+                  {
+                    fontSize: 12,
+                    fill: 'rgb(255,0,0)',
+                    textAnchor: 'middle',
+                    dominantBaseline: 'middle',
+                  }
+                );
+              }
+              if (conn.target.labelPosition) {
+                drawText(
+                  pageGroup,
+                  conn.target.id,
+                  conn.target.labelPosition.x,
+                  conn.target.labelPosition.y,
+                  {
+                    fontSize: 12,
+                    fill: 'rgb(255,0,0)',
+                    textAnchor: 'middle',
+                    dominantBaseline: 'middle',
+                  }
+                );
+              }
+              return;
+            }
+
             // For now, only draw if both ends are components with valid pins
             // If one end is a net label (isPin=false), we might skip or draw to label
             if (conn.source.isPin && conn.target.isPin) {
@@ -284,7 +399,7 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
               const end = getPinCoord(conn.target.id, conn.target.pin);
 
               if (start && end) {
-                drawLine(pageGroup, start, end, { stroke: 'black', strokeWidth: 1.5 });
+                drawLine(pageGroup, start, end, { stroke: 'rgb(0,0,255)', strokeWidth: 1 });
               }
             } else if (!conn.source.isPin && conn.target.isPin) {
               // Source is net label, Target is component pin
@@ -297,7 +412,7 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
                 // Let's just draw a small text at the pin location for the Net Name
                 drawText(pageGroup, conn.source.id, end.x, end.y - 10, {
                   fontSize: 10,
-                  fill: 'blue',
+                  fill: 'rgb(255,0,0)',
                   textAnchor: 'middle',
                 });
               }
@@ -307,12 +422,40 @@ export const draw: DrawDefinition = (text, id, _version, diagObj) => {
               if (start) {
                 drawText(pageGroup, conn.target.id, start.x, start.y - 10, {
                   fontSize: 10,
-                  fill: 'blue',
+                  fill: 'rgb(255,0,0)',
                   textAnchor: 'middle',
                 });
               }
             }
           });
+
+          // Draw Pin Highlights (Debug / Feature)
+          if (config.schematic?.showPinHighlights) {
+            page.symbols.forEach((sym) => {
+              if (sym.electrical?.pins && Array.isArray(sym.electrical.pins)) {
+                sym.electrical.pins.forEach((pin: any) => {
+                  drawPinHighlight(pageGroup, {
+                    x: pin.x,
+                    y: pin.y,
+                    radius: 3,
+                    fill: 'yellow',
+                    stroke: 'none',
+                    fillOpacity: 0.8,
+                    className: 'pin-highlight',
+                  });
+
+                  // Optional: Draw pin ID for debugging
+                  /*
+                        drawText(pageGroup, pin.id, pin.x, pin.y - 5, {
+                            fontSize: 8,
+                            fill: 'black',
+                            textAnchor: 'middle'
+                        });
+                        */
+                });
+              }
+            });
+          }
         }
       }
     });

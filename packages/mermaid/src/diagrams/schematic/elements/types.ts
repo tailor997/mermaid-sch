@@ -4,6 +4,7 @@ export interface ElementStyle {
   fill?: string;
   strokeDasharray?: string;
   className?: string;
+  fillOpacity?: number;
 }
 
 export interface Point {
