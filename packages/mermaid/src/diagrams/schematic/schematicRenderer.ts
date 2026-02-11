@@ -10,6 +10,12 @@ import type {
 } from './schematicDb.js';
 import { drawResistor, drawCapacitor, drawInductor } from './components/index.js';
 import { drawPinHighlight } from './components/pinHighlight.js';
+import {
+  PIN_HIGHLIGHT_FILL,
+  PIN_HIGHLIGHT_FILL_OPACITY,
+  PIN_HIGHLIGHT_RADIUS,
+  PIN_HIGHLIGHT_STROKE,
+} from './components/constants.js';
 import { drawRect, drawText, drawLine, drawPolyline } from './elements/index.js';
 import { setupViewPortForSVG } from '../../rendering-util/setupViewPortForSVG.js';
 import { layoutSchematic, type SchematicConfig } from './schematicLayout.js';
@@ -352,6 +358,9 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
           };
 
           page.connections.forEach((conn: SchematicConnection) => {
+            const showEndpointHighlights =
+              config.schematic?.showEndpointHighlights ?? config.schematic?.showPinHighlights;
+
             // If connection has pre-calculated points from layout, use them
             if (conn.points && conn.points.length > 0) {
               drawPolyline(pageGroup, conn.points, {
@@ -359,6 +368,29 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
                 strokeWidth: 1,
                 fill: 'none',
               });
+
+              if (showEndpointHighlights && conn.points.length >= 2) {
+                const start = conn.points[0];
+                const end = conn.points[conn.points.length - 1];
+                drawPinHighlight(pageGroup, {
+                  x: start.x,
+                  y: start.y,
+                  radius: PIN_HIGHLIGHT_RADIUS,
+                  fill: PIN_HIGHLIGHT_FILL,
+                  stroke: PIN_HIGHLIGHT_STROKE,
+                  fillOpacity: PIN_HIGHLIGHT_FILL_OPACITY,
+                  className: 'endpoint-highlight',
+                });
+                drawPinHighlight(pageGroup, {
+                  x: end.x,
+                  y: end.y,
+                  radius: PIN_HIGHLIGHT_RADIUS,
+                  fill: PIN_HIGHLIGHT_FILL,
+                  stroke: PIN_HIGHLIGHT_STROKE,
+                  fillOpacity: PIN_HIGHLIGHT_FILL_OPACITY,
+                  className: 'endpoint-highlight',
+                });
+              }
 
               // Draw Net Labels if positions are available from layout
               if (conn.source.labelPosition) {
@@ -400,6 +432,26 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
 
               if (start && end) {
                 drawLine(pageGroup, start, end, { stroke: 'rgb(0,0,255)', strokeWidth: 1 });
+                if (showEndpointHighlights) {
+                  drawPinHighlight(pageGroup, {
+                    x: start.x,
+                    y: start.y,
+                    radius: PIN_HIGHLIGHT_RADIUS,
+                    fill: PIN_HIGHLIGHT_FILL,
+                    stroke: PIN_HIGHLIGHT_STROKE,
+                    fillOpacity: PIN_HIGHLIGHT_FILL_OPACITY,
+                    className: 'endpoint-highlight',
+                  });
+                  drawPinHighlight(pageGroup, {
+                    x: end.x,
+                    y: end.y,
+                    radius: PIN_HIGHLIGHT_RADIUS,
+                    fill: PIN_HIGHLIGHT_FILL,
+                    stroke: PIN_HIGHLIGHT_STROKE,
+                    fillOpacity: PIN_HIGHLIGHT_FILL_OPACITY,
+                    className: 'endpoint-highlight',
+                  });
+                }
               }
             } else if (!conn.source.isPin && conn.target.isPin) {
               // Source is net label, Target is component pin
@@ -437,10 +489,10 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
                   drawPinHighlight(pageGroup, {
                     x: pin.x,
                     y: pin.y,
-                    radius: 3,
-                    fill: 'yellow',
-                    stroke: 'none',
-                    fillOpacity: 0.8,
+                    radius: PIN_HIGHLIGHT_RADIUS,
+                    fill: PIN_HIGHLIGHT_FILL,
+                    stroke: PIN_HIGHLIGHT_STROKE,
+                    fillOpacity: PIN_HIGHLIGHT_FILL_OPACITY,
                     className: 'pin-highlight',
                   });
 

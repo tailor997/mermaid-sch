@@ -1,10 +1,10 @@
 import ELK from 'elkjs/lib/elk.bundled.js';
-import type { ElkNode, ElkPort, ElkPrimitiveEdge } from 'elkjs';
+import type { ElkNode, ElkPort, ElkExtendedEdge } from 'elkjs';
 import type { SchematicDB, SchematicPage } from './schematicDb.js';
 import { log } from '../../logger.js';
 import type { MermaidConfig } from '../../config.type.js';
 
-import { COMPONENT_SIZE, STANDARD_PINS } from './components/constants.js';
+import { COMPONENT_SIZE } from './components/constants.js';
 
 export interface SchematicConfig extends MermaidConfig {
   schematic?: {
@@ -14,6 +14,7 @@ export interface SchematicConfig extends MermaidConfig {
     direction?: 'RIGHT' | 'LEFT' | 'DOWN' | 'UP';
     engine?: 'elk';
     showPinHighlights?: boolean;
+    showEndpointHighlights?: boolean;
     dumpLayout?: boolean;
   };
 }
@@ -128,6 +129,9 @@ const layoutPage = async (
 
   // Map Symbols to ELK Nodes
   page.symbols.forEach((sym) => {
+    const width = sym.width ?? COMPONENT_SIZE;
+    const height = sym.height ?? COMPONENT_SIZE;
+
     // Ensure ID uniqueness for safety (though DB should handle this)
     // For components like resistors, capacitors, etc., they are standard nodes.
     // Future expansion: sub-circuits or composite components might need recursion.
@@ -139,17 +143,13 @@ const layoutPage = async (
     ) {
       sym.pinGroups = [
         {
-          pins: STANDARD_PINS.TWO_TERMINAL.map((p) => ({
-            id: p.id,
-            x: p.x,
-            y: p.y,
-          })),
+          pins: [
+            { id: '0', x: -width / 2, y: 0 },
+            { id: '1', x: width / 2, y: 0 },
+          ],
         },
       ];
     }
-
-    const width = sym.width ?? COMPONENT_SIZE;
-    const height = sym.height ?? COMPONENT_SIZE;
 
     const elkNode: ElkNode = {
       id: sym.id,
@@ -183,8 +183,8 @@ const layoutPage = async (
 
           const elkPort: ElkPort = {
             id: `${sym.id}:${pin.id}`,
-            width: 0,
-            height: 0,
+            width: 1,
+            height: 1,
             x: portX,
             y: portY,
             layoutOptions: {
@@ -235,24 +235,82 @@ const layoutPage = async (
 
   // Map Connections to ELK Edges
   page.connections.forEach((conn) => {
-    const edge: ElkPrimitiveEdge = {
+    const edge: ElkExtendedEdge = {
       id: conn.id,
       sources: [],
       targets: [],
     };
 
+    const findSymbol = (id: string) => page.symbols.find((s) => s.id === id || s.id === String(id));
+
+    const getDesiredSide = (role: 'source' | 'target') => {
+      const sourceSide =
+        direction === 'RIGHT'
+          ? 'EAST'
+          : direction === 'LEFT'
+            ? 'WEST'
+            : direction === 'DOWN'
+              ? 'SOUTH'
+              : 'NORTH';
+      if (role === 'source') {
+        return sourceSide;
+      }
+      return sourceSide === 'EAST'
+        ? 'WEST'
+        : sourceSide === 'WEST'
+          ? 'EAST'
+          : sourceSide === 'SOUTH'
+            ? 'NORTH'
+            : 'SOUTH';
+    };
+
+    const pickPinForSide = (sym: any, desiredSide: string) => {
+      const rotation = (sym.electrical?.rotation as number) ?? 0;
+      const rad = (rotation * Math.PI) / 180;
+
+      for (const group of sym.pinGroups ?? []) {
+        for (const pin of group.pins ?? []) {
+          const rx = pin.x * Math.cos(rad) - pin.y * Math.sin(rad);
+          const ry = pin.x * Math.sin(rad) + pin.y * Math.cos(rad);
+          const side = getPortSide(rx, ry);
+          if (side === desiredSide) {
+            return { pinId: pin.id };
+          }
+        }
+      }
+      return null;
+    };
+
     if (conn.source.isPin && conn.source.pin) {
-      edge.sources.push(conn.source.id);
-      (edge as any).sourcePorts = [`${conn.source.id}:${conn.source.pin}`];
+      edge.sources.push(`${conn.source.id}:${conn.source.pin}`);
     } else {
-      edge.sources.push(conn.source.id);
+      const sym = findSymbol(conn.source.id);
+      if (sym?.pinGroups?.length) {
+        const picked = pickPinForSide(sym, getDesiredSide('source'));
+        if (picked) {
+          edge.sources.push(`${conn.source.id}:${picked.pinId}`);
+        } else {
+          edge.sources.push(conn.source.id);
+        }
+      } else {
+        edge.sources.push(conn.source.id);
+      }
     }
 
     if (conn.target.isPin && conn.target.pin) {
-      edge.targets.push(conn.target.id);
-      (edge as any).targetPorts = [`${conn.target.id}:${conn.target.pin}`];
+      edge.targets.push(`${conn.target.id}:${conn.target.pin}`);
     } else {
-      edge.targets.push(conn.target.id);
+      const sym = findSymbol(conn.target.id);
+      if (sym?.pinGroups?.length) {
+        const picked = pickPinForSide(sym, getDesiredSide('target'));
+        if (picked) {
+          edge.targets.push(`${conn.target.id}:${picked.pinId}`);
+        } else {
+          edge.targets.push(conn.target.id);
+        }
+      } else {
+        edge.targets.push(conn.target.id);
+      }
     }
 
     elkGraph.edges?.push(edge);
@@ -301,6 +359,148 @@ const getPortSide = (x: number, y: number): string => {
 
 const applyLayout = (page: SchematicPage, graph: ElkNode) => {
   const symbolIds = new Set(page.symbols.map((s) => s.id));
+
+  const getSymbolPins = (symbolId: string) => {
+    const sym = page.symbols.find((s) => s.id === symbolId);
+    const pins = (sym?.electrical as any)?.pins;
+    if (!pins || !Array.isArray(pins) || pins.length === 0) {
+      return null;
+    }
+    return pins as { id: string; x: number; y: number }[];
+  };
+
+  const pointDist = (a: { x: number; y: number }, b: { x: number; y: number }) =>
+    Math.hypot(a.x - b.x, a.y - b.y);
+
+  const approxEqual = (a: number, b: number, eps = 0.1) => Math.abs(a - b) <= eps;
+
+  const dedupeConsecutivePoints = (points: { x: number; y: number }[]) => {
+    if (points.length === 0) {
+      return points;
+    }
+    const uniquePoints: { x: number; y: number }[] = [points[0]];
+    for (let i = 1; i < points.length; i++) {
+      const prev = uniquePoints[uniquePoints.length - 1];
+      const curr = points[i];
+      if (!approxEqual(prev.x, curr.x) || !approxEqual(prev.y, curr.y)) {
+        uniquePoints.push(curr);
+      }
+    }
+    return uniquePoints;
+  };
+
+  const pickBestPin = (
+    pins: { id: string; x: number; y: number }[],
+    neighbor: { x: number; y: number },
+    currentEndpoint: { x: number; y: number }
+  ) => {
+    let best: { id: string; x: number; y: number } | null = null;
+    let bestScore = Number.POSITIVE_INFINITY;
+    for (const pin of pins) {
+      const score = pointDist(pin, neighbor) + pointDist(pin, currentEndpoint) * 0.2;
+      if (score < bestScore) {
+        best = pin;
+        bestScore = score;
+      }
+    }
+    return best;
+  };
+
+  const ensureOrthogonalAtStart = (
+    points: { x: number; y: number }[],
+    oldStart: { x: number; y: number }
+  ) => {
+    if (points.length < 2) {
+      return points;
+    }
+    const start = points[0];
+    const next = points[1];
+    if (approxEqual(start.x, next.x) || approxEqual(start.y, next.y)) {
+      return points;
+    }
+
+    if (approxEqual(oldStart.x, next.x)) {
+      points.splice(1, 0, { x: next.x, y: start.y });
+      return points;
+    }
+    if (approxEqual(oldStart.y, next.y)) {
+      points.splice(1, 0, { x: start.x, y: next.y });
+      return points;
+    }
+
+    const i1 = { x: start.x, y: next.y };
+    const i2 = { x: next.x, y: start.y };
+    const oldDx = Math.abs(oldStart.x - next.x);
+    const oldDy = Math.abs(oldStart.y - next.y);
+    points.splice(1, 0, oldDx < oldDy ? i2 : i1);
+    return points;
+  };
+
+  const ensureOrthogonalAtEnd = (
+    points: { x: number; y: number }[],
+    oldEnd: { x: number; y: number }
+  ) => {
+    if (points.length < 2) {
+      return points;
+    }
+    const end = points[points.length - 1];
+    const prev = points[points.length - 2];
+    if (approxEqual(end.x, prev.x) || approxEqual(end.y, prev.y)) {
+      return points;
+    }
+
+    if (approxEqual(oldEnd.x, prev.x)) {
+      points.splice(-1, 0, { x: prev.x, y: end.y });
+      return points;
+    }
+    if (approxEqual(oldEnd.y, prev.y)) {
+      points.splice(-1, 0, { x: end.x, y: prev.y });
+      return points;
+    }
+
+    const i1 = { x: end.x, y: prev.y };
+    const i2 = { x: prev.x, y: end.y };
+    const oldDx = Math.abs(oldEnd.x - prev.x);
+    const oldDy = Math.abs(oldEnd.y - prev.y);
+    points.splice(-1, 0, oldDx < oldDy ? i2 : i1);
+    return points;
+  };
+
+  const snapConnectionEndpointsToPins = (conn: any) => {
+    if (!conn.points || conn.points.length < 2) {
+      return;
+    }
+
+    const points = conn.points as { x: number; y: number }[];
+    const oldStart = { ...points[0] };
+    const oldEnd = { ...points[points.length - 1] };
+
+    if (!conn.source?.isPin && symbolIds.has(conn.source?.id)) {
+      const pins = getSymbolPins(conn.source.id);
+      if (pins) {
+        const neighbor = points[1];
+        const best = pickBestPin(pins, neighbor, points[0]);
+        if (best) {
+          points[0] = { x: best.x, y: best.y };
+          ensureOrthogonalAtStart(points, oldStart);
+        }
+      }
+    }
+
+    if (!conn.target?.isPin && symbolIds.has(conn.target?.id)) {
+      const pins = getSymbolPins(conn.target.id);
+      if (pins) {
+        const neighbor = points[points.length - 2];
+        const best = pickBestPin(pins, neighbor, points[points.length - 1]);
+        if (best) {
+          points[points.length - 1] = { x: best.x, y: best.y };
+          ensureOrthogonalAtEnd(points, oldEnd);
+        }
+      }
+    }
+
+    conn.points = dedupeConsecutivePoints(points);
+  };
 
   // Update symbols
   graph.children?.forEach((child) => {
@@ -375,20 +575,8 @@ const applyLayout = (page: SchematicPage, graph: ElkNode) => {
         points.push({ x: section.endPoint.x, y: section.endPoint.y });
       });
 
-      // Filter out duplicate consecutive points (which happens where sections join)
-      const uniquePoints: { x: number; y: number }[] = [];
-      if (points.length > 0) {
-        uniquePoints.push(points[0]);
-        for (let i = 1; i < points.length; i++) {
-          const prev = uniquePoints[uniquePoints.length - 1];
-          const curr = points[i];
-          if (Math.abs(prev.x - curr.x) > 0.1 || Math.abs(prev.y - curr.y) > 0.1) {
-            uniquePoints.push(curr);
-          }
-        }
-      }
-
-      conn.points = uniquePoints;
+      conn.points = dedupeConsecutivePoints(points);
+      snapConnectionEndpointsToPins(conn);
     }
   });
 };
