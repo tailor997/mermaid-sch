@@ -8,7 +8,7 @@ import type {
   SchematicConnection,
   SchematicSymbol,
 } from './schematicDb.js';
-import { drawResistor, drawCapacitor, drawInductor } from './components/index.js';
+import { SymbolLibrary } from './components/index.js';
 import { drawPinHighlight } from './components/pinHighlight.js';
 import {
   PIN_HIGHLIGHT_FILL,
@@ -19,6 +19,22 @@ import {
 import { drawRect, drawText, drawLine, drawPolyline } from './elements/index.js';
 import { setupViewPortForSVG } from '../../rendering-util/setupViewPortForSVG.js';
 import { layoutSchematic, type SchematicConfig } from './schematicLayout.js';
+
+// Global symbol library instance
+let symbolLibrary: SymbolLibrary | null = null;
+
+/**
+ * Initialize symbol library
+ * Path is relative to the page root - symbols are served from demos/symbols
+ */
+const initSymbolLibrary = async (): Promise<SymbolLibrary> => {
+  if (!symbolLibrary) {
+    // Use relative path from page root (demos/ directory)
+    symbolLibrary = new SymbolLibrary('./symbols');
+    await symbolLibrary.init();
+  }
+  return symbolLibrary;
+};
 
 interface DemoComponent {
   type: string;
@@ -204,7 +220,7 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
 
   // Render Symbols from Page Data
   if (schematicData.pages?.length > 0) {
-    schematicData.pages.forEach((page: SchematicPage) => {
+    for (const page of schematicData.pages) {
       // Find the page group
       const pageGroup = g.select(`.page-group.page-${page.id}`);
 
@@ -231,18 +247,38 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
           autoLayout(components, 100, 100);
         }
 
-        components.forEach((comp) => {
+        // Initialize symbol library for SVG support
+        log.info('[SchematicRenderer] Initializing symbol library...');
+        const symLib = await initSymbolLibrary();
+        log.info('[SchematicRenderer] Symbol library initialized');
+
+        // Store pin positions for connections
+        const componentPins = new Map<string, Record<string, { x: number; y: number }>>();
+
+        for (const comp of components) {
           if (comp.x === undefined || comp.y === undefined) {
-            return;
+            continue;
           }
-          if (comp.type === 'resistor') {
-            drawResistor(pageGroup, comp as Required<DemoComponent>);
-          } else if (comp.type === 'capacitor') {
-            drawCapacitor(pageGroup, comp as Required<DemoComponent>);
-          } else if (comp.type === 'inductor') {
-            drawInductor(pageGroup, comp as Required<DemoComponent>);
+
+          // Check if symbol exists in SVG library
+          const symbolDef = symLib.getSymbol(comp.type);
+          if (symbolDef) {
+            // Use SVG symbol
+            const result = await symLib.drawSymbol(pageGroup, comp.type, {
+              x: comp.x,
+              y: comp.y,
+              rotation: comp.rotation,
+              label: comp.label,
+              name: comp.name,
+            });
+            if (result) {
+              componentPins.set(comp.name, result.pins);
+            }
+          } else {
+            // Symbol not found in library
+            log.warn(`Unknown component type: ${comp.type}`);
           }
-        });
+        }
 
         // Draw Connections
         if (page.connections?.length > 0) {
@@ -510,7 +546,7 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
           }
         }
       }
-    });
+    }
   }
 
   // Setup ViewPort

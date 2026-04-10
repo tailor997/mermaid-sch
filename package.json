@@ -147,5 +147,8 @@
       "sharp",
       "vue-demi"
     ]
+  },
+  "dependencies": {
+    "elkjs": "^0.9.3"
   }
 }

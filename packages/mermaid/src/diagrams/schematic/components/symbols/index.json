@@ -1,0 +1,122 @@
+{
+  "$schema": "./schema.json",
+  "version": "1.1.0",
+  "description": "Schematic Symbol Library - Extended",
+  "categories": {
+    "passive": {
+      "name": "Passive Components",
+      "description": "Resistors, capacitors, inductors, crystals"
+    },
+    "semiconductor": {
+      "name": "Semiconductors",
+      "description": "Diodes, LEDs, transistors"
+    },
+    "mechanical": {
+      "name": "Mechanical",
+      "description": "Buttons, switches, connectors"
+    },
+    "ic": {
+      "name": "Integrated Circuits",
+      "description": "Regulators, microcontrollers, op-amps"
+    }
+  },
+  "symbols": {
+    "resistor": {
+      "category": "passive",
+      "name": "Resistor",
+      "file": "passive/resistor.svg",
+      "description": "Fixed resistor",
+      "pins": {
+        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
+        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+      },
+      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "capacitor": {
+      "category": "passive",
+      "name": "Capacitor",
+      "file": "passive/capacitor.svg",
+      "description": "Ceramic/Electrolytic capacitor",
+      "pins": {
+        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
+        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+      },
+      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
+      "defaults": { "rotation": 90, "labelPosition": "below" }
+    },
+    "inductor": {
+      "category": "passive",
+      "name": "Inductor",
+      "file": "passive/inductor.svg",
+      "description": "Inductor/Coil",
+      "pins": {
+        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
+        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+      },
+      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "crystal": {
+      "category": "passive",
+      "name": "Crystal",
+      "file": "passive/crystal.svg",
+      "description": "Quartz crystal oscillator",
+      "pins": {
+        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
+        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+      },
+      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "button": {
+      "category": "mechanical",
+      "name": "Push Button",
+      "file": "passive/button.svg",
+      "description": "Momentary push button switch (NO)",
+      "pins": {
+        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
+        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+      },
+      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "led": {
+      "category": "semiconductor",
+      "name": "LED",
+      "file": "semiconductor/led.svg",
+      "description": "Light Emitting Diode",
+      "pins": {
+        "0": { "id": "0", "name": "anode", "x": -35, "y": 0, "type": "positive" },
+        "1": { "id": "1", "name": "cathode", "x": 35, "y": 0, "type": "negative" }
+      },
+      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "diode": {
+      "category": "semiconductor",
+      "name": "Diode",
+      "file": "semiconductor/diode.svg",
+      "description": "Standard rectifier diode",
+      "pins": {
+        "0": { "id": "0", "name": "anode", "x": -35, "y": 0, "type": "positive" },
+        "1": { "id": "1", "name": "cathode", "x": 35, "y": 0, "type": "negative" }
+      },
+      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    },
+    "regulator": {
+      "category": "ic",
+      "name": "Voltage Regulator",
+      "file": "ic/regulator.svg",
+      "description": "3-pin voltage regulator (like AMS1117)",
+      "pins": {
+        "0": { "id": "0", "name": "Vin", "x": -35, "y": -15, "type": "power" },
+        "1": { "id": "1", "name": "GND", "x": 0, "y": 35, "type": "ground" },
+        "2": { "id": "2", "name": "Vout", "x": 35, "y": 15, "type": "power" }
+      },
+      "bbox": { "x": -35, "y": -30, "width": 70, "height": 60 },
+      "defaults": { "rotation": 0, "labelPosition": "below" }
+    }
+  }
+}

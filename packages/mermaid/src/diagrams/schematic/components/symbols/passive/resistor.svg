@@ -1,0 +1,26 @@
+<svg viewBox="-35 -15 70 30" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .body { stroke: #333; stroke-width: 1.5; fill: none; }
+      .pin { stroke: #333; stroke-width: 1; }
+      .label { font-family: sans-serif; font-size: 10px; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- 左引脚 - data-pin-id 用于标识引脚 -->
+  <line x1="-35" y1="0" x2="-15" y2="0" class="pin" data-pin-id="0" data-pin-name="left"/>
+  
+  <!-- 电阻主体 - 折线样式 (ANSI标准) -->
+  <polyline points="-15,0 -10,-8 -5,8 0,-8 5,8 10,-8 15,0" class="body" fill="none"/>
+  
+  <!-- 右引脚 -->
+  <line x1="15" y1="0" x2="35" y2="0" class="pin" data-pin-id="1" data-pin-name="right"/>
+  
+  <!-- 热点标记 (用于调试或高亮) -->
+  <circle cx="-35" cy="0" r="2" fill="#0066cc" opacity="0" class="pin-hotspot" data-pin-id="0"/>
+  <circle cx="35" cy="0" r="2" fill="#0066cc" opacity="0" class="pin-hotspot" data-pin-id="1"/>
+  
+  <!-- 名称标签位置 (由渲染器填充) -->
+  <text x="0" y="-12" class="label name-placeholder" style="display:none;"></text>
+  <text x="0" y="22" class="label value-placeholder" style="display:none;"></text>
+</svg>

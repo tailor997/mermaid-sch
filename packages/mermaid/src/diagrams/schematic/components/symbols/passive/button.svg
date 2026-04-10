@@ -1,0 +1,33 @@
+<svg viewBox="-35 -20 70 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .body { stroke: #333; stroke-width: 1.5; fill: none; }
+      .pin { stroke: #333; stroke-width: 1; }
+      .contact { stroke: #333; stroke-width: 2; }
+      .label { font-family: sans-serif; font-size: 10px; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- 左引脚 -->
+  <line x1="-35" y1="0" x2="-10" y2="0" class="pin" data-pin-id="0" data-pin-name="left"/>
+  
+  <!-- 左触点 -->
+  <circle cx="-10" cy="0" r="2" class="contact" fill="none"/>
+  
+  <!-- 常开触点连线 (倾斜) -->
+  <line x1="-8" y1="0" x2="8" y2="-10" class="body"/>
+  
+  <!-- 右触点 -->
+  <circle cx="10" cy="0" r="2" class="contact" fill="none"/>
+  
+  <!-- 右引脚 -->
+  <line x1="10" y1="0" x2="35" y2="0" class="pin" data-pin-id="1" data-pin-name="right"/>
+  
+  <!-- 热点标记 -->
+  <circle cx="-35" cy="0" r="2" fill="#0066cc" opacity="0" class="pin-hotspot" data-pin-id="0"/>
+  <circle cx="35" cy="0" r="2" fill="#0066cc" opacity="0" class="pin-hotspot" data-pin-id="1"/>
+  
+  <!-- 名称标签位置 -->
+  <text x="0" y="-16" class="label name-placeholder" style="display:none;"></text>
+  <text x="0" y="28" class="label value-placeholder" style="display:none;"></text>
+</svg>

@@ -4,9 +4,36 @@ import cors from 'cors';
 import { context } from 'esbuild';
 import type { Request, Response } from 'express';
 import express from 'express';
+import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { packageOptions } from '../.build/common.js';
 import { generateLangium } from '../.build/generateLangium.js';
 import { defaultOptions, getBuildConfig } from './util.js';
+
+/**
+ * Copy symbols from source to demos directory if source is newer or doesn't exist
+ */
+function syncSymbols() {
+  const sourceDir = './packages/mermaid/src/diagrams/schematic/components/symbols';
+  const targetDir = './demos/symbols';
+
+  if (!existsSync(sourceDir)) {
+    console.log('Symbols source directory not found, skipping sync');
+    return;
+  }
+
+  // Ensure target directory exists
+  if (!existsSync(targetDir)) {
+    mkdirSync(targetDir, { recursive: true });
+  }
+
+  try {
+    // Copy entire directory (recursive)
+    cpSync(sourceDir, targetDir, { recursive: true, force: true });
+    console.log(`Symbols synced: ${sourceDir} -> ${targetDir}`);
+  } catch (e) {
+    console.error('Failed to sync symbols:', e);
+  }
+}
 
 const configs = Object.values(packageOptions).map(({ packageName }) =>
   getBuildConfig({
@@ -85,6 +112,7 @@ function sendEventsToAll() {
 }
 
 async function createServer() {
+  syncSymbols();
   await generateLangium();
   handleFileChange();
   const app = express();

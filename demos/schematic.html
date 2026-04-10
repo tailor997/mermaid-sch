@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Mermaid Schematic Diagram Demo</title>
+    <title>Mermaid Schematic Diagram Demo - SVG Symbols</title>
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=" />
     <style>
       body {
@@ -16,6 +16,10 @@
         border-bottom: 2px solid #ddd;
         padding-bottom: 10px;
       }
+      h3 {
+        color: #2196f3;
+        margin-top: 30px;
+      }
       .mermaid {
         background-color: white;
         padding: 20px;
@@ -23,64 +27,222 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 20px;
       }
+      .divider {
+        margin: 30px 0;
+        border: none;
+        height: 2px;
+        background: linear-gradient(to right, transparent, #2196f3, transparent);
+        position: relative;
+      }
+      .divider::before {
+        content: '◆';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #f5f5f5;
+        color: #2196f3;
+        padding: 0 10px;
+        font-size: 14px;
+      }
+      .feature-box {
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .symbol-list {
+        background: #f5f5f5;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+      }
+      .symbol-list li {
+        margin: 5px 0;
+      }
     </style>
   </head>
   <body>
-    <h1>Schematic Diagram Demo</h1>
-    <p>This demo showcases the new schematic diagram type in Mermaid.</p>
+    <h1>Schematic Diagram Demo - SVG Symbol Library</h1>
 
+    <div class="feature-box">
+      <strong>SVG Symbol Support:</strong> All components are rendered using SVG files from the
+      symbol library.
+      <ul class="symbol-list">
+        <li><strong>Passive:</strong> resistor, capacitor, inductor, crystal</li>
+        <li><strong>Semiconductor:</strong> led, diode</li>
+        <li><strong>Mechanical:</strong> button</li>
+        <li><strong>IC:</strong> regulator</li>
+      </ul>
+    </div>
+
+    <!-- Demo 1: Basic SVG Components -->
+    <h3>Demo 1: SVG Resistor &amp; Capacitor</h3>
     <pre class="mermaid">
 schematic LR
-    subgraph main["Main Circuit"]
+    subgraph test["SVG Symbol Test"]
         title_block{
-            title: "Basic Amplifier",
-            date: "2026-01-27",
-            rev: "V1.0",
-            company: "Demo Corp"
+            title: "SVG Components",
+            date: "2026-04-08"
         }
         
+        %% Using SVG symbols from ./symbols/ directory
         [resistor R1]{label: "10k", rotation: 0}
-        [resistor R2]{label: "220R", rotation: 90}
-        [capacitor C1]{label: "100uF", rotation: 0}
-        [capacitor C2]{label: "10nF", rotation: 90}
-        [resistor R3]{label: "4.7k", rotation: 0}
-
-        %% (0).[C1].(1)
+        [capacitor C1]{label: "100nF", rotation: 90}
+        [inductor L1]{label: "10uH", rotation: 0}
+        
+        %% Connections between components
+        (VIN) (--) (0).[R1]
+        [R1].(1) (--) (0).[C1]
+        [C1].(1) (--) (0).[L1]
+        [L1].(1) (--) (GND)
     end
     </pre>
 
+    <hr class="divider" />
+
+    <!-- Demo 2: RC Filter with SVG -->
+    <h3>Demo 2: RC Low Pass Filter (SVG)</h3>
     <pre class="mermaid">
 schematic LR
-    subgraph main["RC Low Pass & LC Resonant"]
-        page_setting{width: 500, height: 400}
+    subgraph rc_filter["RC Low Pass Filter"]
         title_block{
-            title: "Basic Circuits",
-            date: "2026-01-28",
-            company: "Demo Corp"
+            title: "RC Filter",
+            date: "2026-04-08",
+            company: "SVG Demo"
         }
+        page_setting{width: 500, height: 300}
         
-        # RC Low Pass Filter
         [resistor R1]{label: "1k", rotation: 0}
         [capacitor C1]{label: "10uF", rotation: 90}
         
         (Ui+) (--) (0).[R1]
-                        [R1].(1) (--) (Uo+)
+                        [C1].(0) (--) (Uo+)
                         [R1].(1) (--) [C1].(0)
         (Ui-) (--)      (1).[C1]
                         [C1].(1) (--) (Uo-) 
-
     end
     </pre>
 
+    <hr class="divider" />
+
+    <!-- Demo 3: Power Supply with Multiple Caps -->
+    <h3>Demo 3: Power Supply Decoupling (SVG)</h3>
+    <pre class="mermaid">
+schematic LR
+    subgraph power["Power Supply"]
+        title_block{
+            title: "3.3V Regulator",
+            date: "2026-04-08"
+        }
+        page_setting{width: 800, height: 400}
+        
+        %% Input filter
+        [capacitor C_in]{label: "10uF"}
+        
+        %% Output filters
+        [capacitor C_out1]{label: "10uF"}
+        [capacitor C_out2]{label: "100nF"}
+        
+        %% Decoupling caps
+        [capacitor C_dec1]{label: "100nF"}
+        [capacitor C_dec2]{label: "100nF"}
+        
+        %% Connections - merged bus style
+        (5V_IN) (--) (0).[C_in]
+        [C_in].(1) (--) (GND)
+        
+        (3V3_OUT) (--) (0).[C_out1]
+        (3V3_OUT) (--) (0).[C_out2]
+        (3V3_OUT) (--) (0).[C_dec1]
+        (3V3_OUT) (--) (0).[C_dec2]
+        
+        [C_out1].(1) (--) (GND_BUS)
+        [C_out2].(1) (--) (GND_BUS)
+        [C_dec1].(1) (--) (GND_BUS)
+        [C_dec2].(1) (--) (GND_BUS)
+        (GND_BUS) (--) (GND)
+    end
+    </pre>
+
+    <hr class="divider" />
+
+    <!-- 状态显示区域 -->
+    <div
+      id="status"
+      style="margin-top: 20px; padding: 10px; background: #e3f2fd; border-radius: 4px"
+    >
+      <h3>渲染状态</h3>
+      <pre id="status-content">等待渲染...</pre>
+    </div>
+
+    <!-- 错误显示区域 -->
+    <div
+      id="errors"
+      style="
+        margin-top: 20px;
+        padding: 10px;
+        background: #ffebee;
+        border-radius: 4px;
+        display: none;
+      "
+    >
+      <h3>错误日志</h3>
+      <pre id="errors-content"></pre>
+    </div>
+
     <script type="module">
       import mermaid from './mermaid.esm.mjs';
+
+      const logs = [];
+      const errors = [];
+
+      const originalLog = console.log;
+      const originalError = console.error;
+      const originalWarn = console.warn;
+
+      console.log = (...args) => {
+        logs.push(args.join(' '));
+        document.getElementById('status-content').textContent = logs.slice(-20).join('\n');
+        originalLog.apply(console, args);
+      };
+
+      console.error = (...args) => {
+        errors.push(args.join(' '));
+        document.getElementById('errors').style.display = 'block';
+        document.getElementById('errors-content').textContent = errors.join('\n');
+        originalError.apply(console, args);
+      };
+
+      console.warn = (...args) => {
+        logs.push('WARN: ' + args.join(' '));
+        document.getElementById('status-content').textContent = logs.slice(-20).join('\n');
+        originalWarn.apply(console, args);
+      };
+
+      window.addEventListener('error', (e) => {
+        errors.push('Global Error: ' + e.message);
+        document.getElementById('errors').style.display = 'block';
+        document.getElementById('errors-content').textContent = errors.join('\n');
+      });
+
       mermaid.initialize({
         startOnLoad: true,
         logLevel: 'debug',
         schematic: {
           padding: 20,
+          showPinHighlights: true,
         },
       });
+
+      setTimeout(() => {
+        const svgs = document.querySelectorAll('.mermaid svg');
+        const svgSymbols = document.querySelectorAll('.svg-symbol');
+        logs.push(`\\n✓ 渲染完成: ${svgs.length} 个图表, ${svgSymbols.length} 个SVG符号`);
+        document.getElementById('status-content').textContent = logs.slice(-20).join('\n');
+      }, 3000);
     </script>
   </body>
 </html>

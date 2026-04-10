@@ -53,3 +53,8 @@ vite.config.ts.timestamp-*
 
 # autogenereated by langium-cli
 generated/
+
+# Build/Cache logs
+log/
+node-compile-cache/
+

@@ -6,7 +6,9 @@ import type {
 const id = 'schematic';
 
 const detector: DiagramDetector = (txt) => {
-  return /^\s*schematic/.test(txt);
+  // Remove leading comments (both # and %% style) to detect diagram type
+  const cleanText = txt.replace(/^(\s*(#|%%).*$\n?)+/m, '');
+  return /^\s*schematic\b/.test(cleanText);
 };
 
 const loader: DiagramLoader = async () => {
