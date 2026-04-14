@@ -24,6 +24,7 @@
 "RL"                return 'RL';
 "subgraph"           return 'SUBGRAPH';
 "end"                return 'END';
+"symbol@"            return 'SYMBOL_AT';
 "symbol"             return 'SYMBOL';
 "pin"                return 'PIN';
 "part"               return 'PART';
@@ -37,6 +38,12 @@
 "shape"              return 'SHAPE';
 "value"              return 'VALUE';
 "id"                 return 'ID';
+"type"               return 'TYPE';
+"num"                { return 'NUM'; }
+"pins"               return 'PINS';
+"voltage"            return 'VOLTAGE';
+"max_freq"           return 'MAX_FREQ';
+"styleClass"         return 'STYLECLASS';
 
 "(--)"              return 'DOUBLE_ARROW';
 "["                 return 'LBRACK';
@@ -83,9 +90,11 @@
 [ \t\r]+              /* skip whitespace */
 \n+                 return 'NL';
 
-[a-zA-Z0-9_\-\+]+      return 'IDENTIFIER';
+[0-9]+[a-zA-Z_][a-zA-Z0-9_\-+]* { return 'IDENTIFIER'; }
+[0-9]+       { yytext = parseInt(yytext); return 'NUMBER'; }
+[a-zA-Z_][a-zA-Z0-9_\-+]* { return 'IDENTIFIER'; }
 "\""[^"]*"\""      { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
-"'[^']+'"            { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
+"'"[^']*"'"            { yytext = yytext.substring(1, yytext.length - 1); return 'STRING'; }
 <<EOF>>              return 'EOF';
 
 /lex
@@ -115,7 +124,9 @@ statement
   : subgraph
   | page_setting
   | title_block
+  | symbol_definition
   | component_instantiation
+  | component_reference
   | connection
   | SPACELINE
   | NL
@@ -138,15 +149,100 @@ connection
 
 connectable
   : LPAREN IDENTIFIER RPAREN { $$ = { id: $2, pin: undefined }; }
+  | LPAREN NUMBER RPAREN { $$ = { id: $2, pin: undefined }; }
   | LBRACK IDENTIFIER RBRACK { $$ = { id: $2, pin: undefined }; }
+  | LBRACK NUMBER RBRACK { $$ = { id: $2, pin: undefined }; }
   | LBRACK IDENTIFIER RBRACK DOT LPAREN IDENTIFIER RPAREN { $$ = { id: $2, pin: $6 }; }
+  | LBRACK IDENTIFIER RBRACK DOT LPAREN NUMBER RPAREN { $$ = { id: $2, pin: $6 }; }
+  | LBRACK NUMBER RBRACK DOT LPAREN IDENTIFIER RPAREN { $$ = { id: $2, pin: $6 }; }
+  | LBRACK NUMBER RBRACK DOT LPAREN NUMBER RPAREN { $$ = { id: $2, pin: $6 }; }
   | LPAREN IDENTIFIER RPAREN DOT LBRACK IDENTIFIER RBRACK { $$ = { id: $6, pin: $2 }; }
+  | LPAREN IDENTIFIER RPAREN DOT LBRACK NUMBER RBRACK { $$ = { id: $6, pin: $2 }; }
+  | LPAREN NUMBER RPAREN DOT LBRACK IDENTIFIER RBRACK { $$ = { id: $6, pin: $2 }; }
+  | LPAREN NUMBER RPAREN DOT LBRACK NUMBER RBRACK { $$ = { id: $6, pin: $2 }; }
   ;
 
 component_instantiation
   : LBRACK IDENTIFIER IDENTIFIER RBRACK attributes_opt {
       yy.addSymbol({ name: $2, id: $3, pinGroups: [], electrical: $5 });
   }
+  ;
+
+symbol_definition
+  : SYMBOL_AT IDENTIFIER LCURLY symbol_body RCURLY {
+      yy.addSymbolDefinition($2, $4);
+    }
+  ;
+
+symbol_body
+  : symbol_properties {
+      $$ = $1;
+    }
+  | symbol_properties pin_definitions {
+      $$ = Object.assign({}, $1, { pins: $2 });
+    }
+  | symbol_properties pin_definitions NL {
+      $$ = Object.assign({}, $1, { pins: $2 });
+    }
+  ;
+
+symbol_properties
+  : /* empty */ { $$ = {}; }
+  | symbol_properties NL { $$ = $1; }
+  | symbol_properties symbol_property { $$ = Object.assign({}, $1, $2); }
+  | symbol_properties symbol_property COMMA { $$ = Object.assign({}, $1, $2); }
+  ;
+
+symbol_property
+  : NAME COLON STRING { $$ = { name: $3 }; }
+  | FOOTPRINT COLON STRING { $$ = { footprint: $3 }; }
+  | FOOTPRINT COLON IDENTIFIER { $$ = { footprint: $3 }; }
+  | DESC COLON STRING { $$ = { desc: $3 }; }
+  | MANUFACTURER COLON STRING { $$ = { manufacturer: $3 }; }
+  | VOLTAGE COLON STRING { $$ = { voltage: $3 }; }
+  | MAX_FREQ COLON STRING { $$ = { maxFreq: $3 }; }
+  | SHAPE COLON STRING { $$ = { shape: $3 }; }
+  | SHAPE COLON IDENTIFIER { $$ = { shape: $3 }; }
+  | STYLECLASS COLON STRING { $$ = { styleClass: $3 }; }
+  | STYLECLASS COLON IDENTIFIER { $$ = { styleClass: $3 }; }
+  ;
+
+pin_definitions
+  : PINS COLON LBRACK pin_list RBRACK { $$ = $4; }
+  | PINS COLON LBRACK NL pin_list RBRACK { $$ = $5; }
+  ;
+
+pin_list
+  : pin_item { $$ = [$1]; }
+  | pin_list NL { $$ = $1; }
+  | pin_list COMMA NL pin_item { $$ = $1.concat([$4]); }
+  | pin_list COMMA pin_item { $$ = $1.concat([$3]); }
+  ;
+
+pin_item
+  : LCURLY pin_properties RCURLY { $$ = $2; }
+  | LCURLY NL pin_properties NL RCURLY { $$ = $3; }
+  ;
+
+pin_properties
+  : pin_property { $$ = $1; }
+  | pin_properties COMMA pin_property { $$ = Object.assign({}, $1, $3); }
+  | pin_properties COMMA NL pin_property { $$ = Object.assign({}, $1, $4); }
+  ;
+
+pin_property
+  : NUM COLON NUMBER { $$ = { num: $3 }; }
+  | NAME COLON STRING { $$ = { name: $3 }; }
+  | NAME COLON IDENTIFIER { $$ = { name: $3 }; }
+  | TYPE COLON STRING { $$ = { type: $3 }; }
+  | TYPE COLON IDENTIFIER { $$ = { type: $3 }; }
+  | DESC COLON STRING { $$ = { desc: $3 }; }
+  ;
+
+component_reference
+  : LBRACK COMPONENT IDENTIFIER IDENTIFIER RBRACK attributes_opt {
+      yy.addComponentReference($3, $4, $6);
+    }
   ;
 
 attributes_opt
@@ -174,6 +270,7 @@ attribute
 attribute_value
   : STRING
   | IDENTIFIER
+  | NUMBER
   ;
 
 subgraph

@@ -80,6 +80,26 @@ export interface SchematicDBData {
   config: unknown;
 }
 
+// Symbol definition interfaces for symbol@ syntax
+export interface SchematicSymbolPinDef {
+  num: number;
+  name: string;
+  type?: string;
+  desc?: string;
+}
+
+export interface SchematicSymbolDefinition {
+  name: string;
+  footprint?: string;
+  desc?: string;
+  manufacturer?: string;
+  voltage?: string;
+  maxFreq?: string;
+  shape?: string;
+  styleClass?: string;
+  pins?: SchematicSymbolPinDef[];
+}
+
 export type SchematicLayoutData = LayoutData & {
   schematicData: {
     pages: SchematicPage[];
@@ -90,6 +110,7 @@ export class SchematicDB {
   private pages: SchematicPage[] = [];
   private currentPage: SchematicPage | null = null;
   private count = 0;
+  private symbolDefinitions = new Map<string, SchematicSymbolDefinition>();
 
   constructor() {
     this.clear();
@@ -100,6 +121,9 @@ export class SchematicDB {
     this.setTitleBlock = this.setTitleBlock.bind(this);
     this.getData = this.getData.bind(this);
     this.getLogger = this.getLogger.bind(this);
+    this.addSymbolDefinition = this.addSymbolDefinition.bind(this);
+    this.getSymbolDefinition = this.getSymbolDefinition.bind(this);
+    this.addComponentReference = this.addComponentReference.bind(this);
   }
 
   public getLogger() {
@@ -110,6 +134,52 @@ export class SchematicDB {
     this.pages = [];
     this.currentPage = null;
     this.count = 0;
+    this.symbolDefinitions.clear();
+  }
+
+  public addSymbolDefinition(name: string, definition: SchematicSymbolDefinition): void {
+    this.symbolDefinitions.set(name, definition);
+    log.info(`[SchematicDB] Added symbol definition: ${name}`);
+  }
+
+  public getSymbolDefinition(name: string): SchematicSymbolDefinition | undefined {
+    return this.symbolDefinitions.get(name);
+  }
+
+  public addComponentReference(
+    symbolName: string,
+    refName: string,
+    electrical?: Record<string, unknown>
+  ): void {
+    log.info(`[SchematicDB] Added component reference: ${refName} -> ${symbolName}`);
+    // Also add as a symbol for rendering
+    const symbolDef = this.getSymbolDefinition(symbolName);
+    if (symbolDef && this.currentPage) {
+      // 将 pins 转换为 pinGroups 格式
+      const pinGroups: SchematicSymbolPinGroup[] = [];
+      if (symbolDef.pins && symbolDef.pins.length > 0) {
+        const pins: SchematicSymbolPin[] = symbolDef.pins.map((pinDef) => ({
+          id: pinDef.num.toString(),
+          name: pinDef.name,
+          number: pinDef.num.toString(),
+          type: pinDef.type as 'input' | 'output' | 'bidirectional' | 'power' | 'passive',
+          x: 0, // 将在布局阶段计算
+          y: 0,
+        }));
+        pinGroups.push({ name: 'default', pins });
+      }
+
+      this.currentPage.symbols.push({
+        id: refName,
+        name: symbolName,
+        shape: symbolDef.shape ?? 'rect',
+        pinGroups,
+        electrical: {
+          ...electrical,
+          _symbolDef: symbolDef, // 传递完整定义供渲染器使用
+        },
+      });
+    }
   }
 
   public addPage(id: string, name: string): void {

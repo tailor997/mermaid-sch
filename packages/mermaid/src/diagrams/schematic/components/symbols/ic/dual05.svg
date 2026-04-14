@@ -1,0 +1,62 @@
+<!-- DUAL05_UNIFIED_TEMPLATE: Universal 2x5 pin package (10 pins total) -->
+<svg viewBox="-53 -40 106 80" xmlns="http://www.w3.org/2000/svg" data-template="dual05">
+  <defs>
+    <style>
+      .body { stroke: #333; stroke-width: 1.5; fill: #f5f5dc; }
+      .pin { stroke: #333; stroke-width: 1.2; }
+      .pin-number { font-family: sans-serif; font-size: 7px; fill: #666; text-anchor: middle; }
+      .pin-dot { fill: #dc3545; opacity: 0; }
+      .marker { fill: #333; }
+      .pin-name-anchor { fill: none; opacity: 0; }
+    </style>
+  </defs>
+
+  <!-- IC Body -->
+  <rect x="-25" y="-25" width="50" height="50" class="body" rx="2"/>
+  <!-- Pin 1 Marker -->
+  <circle cx="-17" cy="-20" r="2" class="marker"/>
+
+  <!-- Left Side Pins (1-5) -->
+  <line x1="-33" y1="-20" x2="-25" y2="-20" class="pin" data-pin-id="0" data-pin-name="1"/>
+  <text x="-36" y="-18" class="pin-number" text-anchor="end">1</text>
+  <circle cx="-33" cy="-20" r="2" class="pin-dot" data-pin-id="0"/>
+  <circle cx="-33" cy="-20" r="1" class="pin-name-anchor" data-pin-name-anchor="1"/>
+  <line x1="-33" y1="-10" x2="-25" y2="-10" class="pin" data-pin-id="1" data-pin-name="2"/>
+  <text x="-36" y="-8" class="pin-number" text-anchor="end">2</text>
+  <circle cx="-33" cy="-10" r="2" class="pin-dot" data-pin-id="1"/>
+  <circle cx="-33" cy="-10" r="1" class="pin-name-anchor" data-pin-name-anchor="2"/>
+  <line x1="-33" y1="0" x2="-25" y2="0" class="pin" data-pin-id="2" data-pin-name="3"/>
+  <text x="-36" y="2" class="pin-number" text-anchor="end">3</text>
+  <circle cx="-33" cy="0" r="2" class="pin-dot" data-pin-id="2"/>
+  <circle cx="-33" cy="0" r="1" class="pin-name-anchor" data-pin-name-anchor="3"/>
+  <line x1="-33" y1="10" x2="-25" y2="10" class="pin" data-pin-id="3" data-pin-name="4"/>
+  <text x="-36" y="12" class="pin-number" text-anchor="end">4</text>
+  <circle cx="-33" cy="10" r="2" class="pin-dot" data-pin-id="3"/>
+  <circle cx="-33" cy="10" r="1" class="pin-name-anchor" data-pin-name-anchor="4"/>
+  <line x1="-33" y1="20" x2="-25" y2="20" class="pin" data-pin-id="4" data-pin-name="5"/>
+  <text x="-36" y="22" class="pin-number" text-anchor="end">5</text>
+  <circle cx="-33" cy="20" r="2" class="pin-dot" data-pin-id="4"/>
+  <circle cx="-33" cy="20" r="1" class="pin-name-anchor" data-pin-name-anchor="5"/>
+
+  <!-- Right Side Pins (6-10) -->
+  <line x1="25" y1="-20" x2="33" y2="-20" class="pin" data-pin-id="5" data-pin-name="10"/>
+  <text x="36" y="-18" class="pin-number" text-anchor="start">10</text>
+  <circle cx="33" cy="-20" r="2" class="pin-dot" data-pin-id="5"/>
+  <circle cx="33" cy="-20" r="1" class="pin-name-anchor" data-pin-name-anchor="10"/>
+  <line x1="25" y1="-10" x2="33" y2="-10" class="pin" data-pin-id="6" data-pin-name="9"/>
+  <text x="36" y="-8" class="pin-number" text-anchor="start">9</text>
+  <circle cx="33" cy="-10" r="2" class="pin-dot" data-pin-id="6"/>
+  <circle cx="33" cy="-10" r="1" class="pin-name-anchor" data-pin-name-anchor="9"/>
+  <line x1="25" y1="0" x2="33" y2="0" class="pin" data-pin-id="7" data-pin-name="8"/>
+  <text x="36" y="2" class="pin-number" text-anchor="start">8</text>
+  <circle cx="33" cy="0" r="2" class="pin-dot" data-pin-id="7"/>
+  <circle cx="33" cy="0" r="1" class="pin-name-anchor" data-pin-name-anchor="8"/>
+  <line x1="25" y1="10" x2="33" y2="10" class="pin" data-pin-id="8" data-pin-name="7"/>
+  <text x="36" y="12" class="pin-number" text-anchor="start">7</text>
+  <circle cx="33" cy="10" r="2" class="pin-dot" data-pin-id="8"/>
+  <circle cx="33" cy="10" r="1" class="pin-name-anchor" data-pin-name-anchor="7"/>
+  <line x1="25" y1="20" x2="33" y2="20" class="pin" data-pin-id="9" data-pin-name="6"/>
+  <text x="36" y="22" class="pin-number" text-anchor="start">6</text>
+  <circle cx="33" cy="20" r="2" class="pin-dot" data-pin-id="9"/>
+  <circle cx="33" cy="20" r="1" class="pin-name-anchor" data-pin-name-anchor="6"/>
+</svg>

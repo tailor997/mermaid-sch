@@ -1,3 +1,4 @@
+// cspell:ignore SOIC,TSSOP,LQFP
 import type { DrawDefinition } from '../../diagram-api/types.js';
 import { log } from '../../logger.js';
 import { select } from 'd3';
@@ -9,6 +10,13 @@ import type {
   SchematicSymbol,
 } from './schematicDb.js';
 import { SymbolLibrary } from './components/index.js';
+import {
+  generateDualSidePackage,
+  generateQuadPackage,
+  type PackageConfig,
+} from './components/symbols/ic/icPackageGenerator.js';
+import { drawSvgSymbol } from './components/svgSymbol.js';
+import type { SchematicSymbolDefinition } from './schematicDb.js';
 import { drawPinHighlight } from './components/pinHighlight.js';
 import {
   PIN_HIGHLIGHT_FILL,
@@ -99,6 +107,154 @@ const autoLayout = (components: DemoComponent[], startX: number, startY: number)
       x = startX;
       y += 100;
     }
+  });
+};
+
+/**
+ * Render a custom symbol based on shape definition
+ * Supports dual-side packages (dual04, dual05, ..., dual24) and quad packages
+ */
+const renderCustomSymbol = (
+  parent: any,
+  comp: DemoComponent,
+  symbolDef: SchematicSymbolDefinition,
+  x: number,
+  y: number
+): Record<string, { x: number; y: number }> | null => {
+  const shape = symbolDef.shape;
+  if (!shape) {
+    return null;
+  }
+
+  // Parse shape name (e.g., "dual10", "quad16")
+  const dualMatch = /^dual(\d+)$/i.exec(shape);
+  const quadMatch = /^quad(\d+)$/i.exec(shape);
+
+  if (dualMatch) {
+    const pinsPerSide = parseInt(dualMatch[1], 10);
+    return renderDualSidePackage(parent, comp, symbolDef, x, y, pinsPerSide);
+  } else if (quadMatch) {
+    const pinsPerSide = parseInt(quadMatch[1], 10);
+    return renderQuadPackage(parent, comp, symbolDef, x, y, pinsPerSide);
+  }
+
+  log.warn(`Unsupported shape: ${shape}`);
+  return null;
+};
+
+/**
+ * Render a dual-side package (DIP, SOIC, TSSOP, etc.)
+ */
+const renderDualSidePackage = (
+  parent: any,
+  comp: DemoComponent,
+  symbolDef: SchematicSymbolDefinition,
+  x: number,
+  y: number,
+  pinsPerSide: number
+): Record<string, { x: number; y: number }> => {
+  const config: PackageConfig = {
+    type: 'sop',
+    pinsPerSide,
+    pinPitch: 10,
+    pinLength: 8,
+    bodyWidth: 50,
+  };
+
+  const { svg, pins } = generateDualSidePackage(config);
+
+  const result = drawSvgSymbol(parent, {
+    x,
+    y,
+    rotation: comp.rotation,
+    label: comp.label,
+    name: comp.name,
+    svgContent: svg,
+    pins,
+  });
+
+  // Draw pin names if available
+  if (symbolDef.pins && symbolDef.pins.length > 0) {
+    drawPinNames(result.group, symbolDef.pins, pins, comp.rotation);
+  }
+
+  return result.pins;
+};
+
+/**
+ * Render a quad package (QFN, QFP, LQFP, etc.)
+ */
+const renderQuadPackage = (
+  parent: any,
+  comp: DemoComponent,
+  symbolDef: SchematicSymbolDefinition,
+  x: number,
+  y: number,
+  pinsPerSide: number
+): Record<string, { x: number; y: number }> => {
+  const config: PackageConfig = {
+    type: 'qfp',
+    pinsPerSide,
+    pinPitch: 10,
+    pinLength: 10,
+    bodyWidth: 70,
+  };
+
+  const { svg, pins } = generateQuadPackage(config);
+
+  const result = drawSvgSymbol(parent, {
+    x,
+    y,
+    rotation: comp.rotation,
+    label: comp.label,
+    name: comp.name,
+    svgContent: svg,
+    pins,
+  });
+
+  // Draw pin names if available
+  if (symbolDef.pins && symbolDef.pins.length > 0) {
+    drawPinNames(result.group, symbolDef.pins, pins, comp.rotation);
+  }
+
+  return result.pins;
+};
+
+/**
+ * Draw pin names next to the package pins
+ */
+const drawPinNames = (
+  group: any,
+  pinDefs: { num: number; name: string; type?: string; desc?: string }[],
+  pinPositions: Record<string, { x: number; y: number; name: string; type: string }>,
+  rotation: number
+): void => {
+  const rad = ((rotation || 0) * Math.PI) / 180;
+  const cos = Math.cos(rad);
+  const sin = Math.sin(rad);
+
+  pinDefs.forEach((pinDef) => {
+    const pinNum = (pinDef.num - 1).toString();
+    const pinPos = pinPositions[pinNum];
+    if (!pinPos) {
+      return;
+    }
+
+    // Calculate label position (offset from pin)
+    // Determine side based on pin x position relative to center
+    const isLeft = pinPos.x < 0;
+    const offsetX = isLeft ? -15 : 15;
+
+    // Apply rotation to offset
+    const rotOffsetX = offsetX * cos;
+    const rotOffsetY = offsetX * sin;
+
+    drawText(group, pinDef.name, pinPos.x + rotOffsetX, pinPos.y + rotOffsetY, {
+      fontSize: 8,
+      fill: '#333',
+      textAnchor: isLeft ? 'end' : 'start',
+      dominantBaseline: 'middle',
+    });
   });
 };
 
@@ -275,8 +431,22 @@ export const draw: DrawDefinition = async (text, id, _version, diagObj) => {
               componentPins.set(comp.name, result.pins);
             }
           } else {
-            // Symbol not found in library
-            log.warn(`Unknown component type: ${comp.type}`);
+            // Check if it's a custom symbol with shape definition
+            const pageSymbol = page.symbols.find((s) => s.id === comp.name);
+            const symbolDefinition = pageSymbol?.electrical?._symbolDef as
+              | SchematicSymbolDefinition
+              | undefined;
+
+            if (symbolDefinition?.shape) {
+              // Render custom IC symbol based on shape
+              const pins = renderCustomSymbol(pageGroup, comp, symbolDefinition, comp.x, comp.y);
+              if (pins) {
+                componentPins.set(comp.name, pins);
+              }
+            } else {
+              // Symbol not found in library
+              log.warn(`Unknown component type: ${comp.type}`);
+            }
           }
         }
 

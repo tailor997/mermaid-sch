@@ -27,11 +27,31 @@
       "file": "passive/resistor.svg",
       "description": "Fixed resistor",
       "pins": {
-        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
-        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+        "0": {
+          "id": "0",
+          "name": "left",
+          "x": -35,
+          "y": 0,
+          "type": "passive"
+        },
+        "1": {
+          "id": "1",
+          "name": "right",
+          "x": 35,
+          "y": 0,
+          "type": "passive"
+        }
       },
-      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -15,
+        "width": 70,
+        "height": 30
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "capacitor": {
       "category": "passive",
@@ -39,11 +59,31 @@
       "file": "passive/capacitor.svg",
       "description": "Ceramic/Electrolytic capacitor",
       "pins": {
-        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
-        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+        "0": {
+          "id": "0",
+          "name": "left",
+          "x": -35,
+          "y": 0,
+          "type": "passive"
+        },
+        "1": {
+          "id": "1",
+          "name": "right",
+          "x": 35,
+          "y": 0,
+          "type": "passive"
+        }
       },
-      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
-      "defaults": { "rotation": 90, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -15,
+        "width": 70,
+        "height": 30
+      },
+      "defaults": {
+        "rotation": 90,
+        "labelPosition": "below"
+      }
     },
     "inductor": {
       "category": "passive",
@@ -51,11 +91,31 @@
       "file": "passive/inductor.svg",
       "description": "Inductor/Coil",
       "pins": {
-        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
-        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+        "0": {
+          "id": "0",
+          "name": "left",
+          "x": -35,
+          "y": 0,
+          "type": "passive"
+        },
+        "1": {
+          "id": "1",
+          "name": "right",
+          "x": 35,
+          "y": 0,
+          "type": "passive"
+        }
       },
-      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -15,
+        "width": 70,
+        "height": 30
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "crystal": {
       "category": "passive",
@@ -63,11 +123,31 @@
       "file": "passive/crystal.svg",
       "description": "Quartz crystal oscillator",
       "pins": {
-        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
-        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+        "0": {
+          "id": "0",
+          "name": "left",
+          "x": -35,
+          "y": 0,
+          "type": "passive"
+        },
+        "1": {
+          "id": "1",
+          "name": "right",
+          "x": 35,
+          "y": 0,
+          "type": "passive"
+        }
       },
-      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -20,
+        "width": 70,
+        "height": 40
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "button": {
       "category": "mechanical",
@@ -75,11 +155,31 @@
       "file": "passive/button.svg",
       "description": "Momentary push button switch (NO)",
       "pins": {
-        "0": { "id": "0", "name": "left", "x": -35, "y": 0, "type": "passive" },
-        "1": { "id": "1", "name": "right", "x": 35, "y": 0, "type": "passive" }
+        "0": {
+          "id": "0",
+          "name": "left",
+          "x": -35,
+          "y": 0,
+          "type": "passive"
+        },
+        "1": {
+          "id": "1",
+          "name": "right",
+          "x": 35,
+          "y": 0,
+          "type": "passive"
+        }
       },
-      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -20,
+        "width": 70,
+        "height": 40
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "led": {
       "category": "semiconductor",
@@ -87,11 +187,31 @@
       "file": "semiconductor/led.svg",
       "description": "Light Emitting Diode",
       "pins": {
-        "0": { "id": "0", "name": "anode", "x": -35, "y": 0, "type": "positive" },
-        "1": { "id": "1", "name": "cathode", "x": 35, "y": 0, "type": "negative" }
+        "0": {
+          "id": "0",
+          "name": "anode",
+          "x": -35,
+          "y": 0,
+          "type": "positive"
+        },
+        "1": {
+          "id": "1",
+          "name": "cathode",
+          "x": 35,
+          "y": 0,
+          "type": "negative"
+        }
       },
-      "bbox": { "x": -35, "y": -20, "width": 70, "height": 40 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -20,
+        "width": 70,
+        "height": 40
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "diode": {
       "category": "semiconductor",
@@ -99,11 +219,31 @@
       "file": "semiconductor/diode.svg",
       "description": "Standard rectifier diode",
       "pins": {
-        "0": { "id": "0", "name": "anode", "x": -35, "y": 0, "type": "positive" },
-        "1": { "id": "1", "name": "cathode", "x": 35, "y": 0, "type": "negative" }
+        "0": {
+          "id": "0",
+          "name": "anode",
+          "x": -35,
+          "y": 0,
+          "type": "positive"
+        },
+        "1": {
+          "id": "1",
+          "name": "cathode",
+          "x": 35,
+          "y": 0,
+          "type": "negative"
+        }
       },
-      "bbox": { "x": -35, "y": -15, "width": 70, "height": 30 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -15,
+        "width": 70,
+        "height": 30
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
     },
     "regulator": {
       "category": "ic",
@@ -111,12 +251,5662 @@
       "file": "ic/regulator.svg",
       "description": "3-pin voltage regulator (like AMS1117)",
       "pins": {
-        "0": { "id": "0", "name": "Vin", "x": -35, "y": -15, "type": "power" },
-        "1": { "id": "1", "name": "GND", "x": 0, "y": 35, "type": "ground" },
-        "2": { "id": "2", "name": "Vout", "x": 35, "y": 15, "type": "power" }
+        "0": {
+          "id": "0",
+          "name": "Vin",
+          "x": -35,
+          "y": -15,
+          "type": "power"
+        },
+        "1": {
+          "id": "1",
+          "name": "GND",
+          "x": 0,
+          "y": 35,
+          "type": "ground"
+        },
+        "2": {
+          "id": "2",
+          "name": "Vout",
+          "x": 35,
+          "y": 15,
+          "type": "power"
+        }
       },
-      "bbox": { "x": -35, "y": -30, "width": 70, "height": 60 },
-      "defaults": { "rotation": 0, "labelPosition": "below" }
+      "bbox": {
+        "x": -35,
+        "y": -30,
+        "width": 70,
+        "height": 60
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      }
+    },
+    "dual04": {
+      "category": "ic",
+      "name": "DUAL04",
+      "file": "ic/dual04.svg",
+      "description": "Unified 2x4 pin package (8 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -15,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -5,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": 5,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": 15,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": 33,
+          "y": -15,
+          "name": "8",
+          "type": "passive"
+        },
+        "5": {
+          "x": 33,
+          "y": -5,
+          "name": "7",
+          "type": "passive"
+        },
+        "6": {
+          "x": 33,
+          "y": 5,
+          "name": "6",
+          "type": "passive"
+        },
+        "7": {
+          "x": 33,
+          "y": 15,
+          "name": "5",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -35,
+        "width": 106,
+        "height": 70
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual05": {
+      "category": "ic",
+      "name": "DUAL05",
+      "file": "ic/dual05.svg",
+      "description": "Unified 2x5 pin package (10 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -20,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -10,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": 0,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": 10,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": 20,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": 33,
+          "y": -20,
+          "name": "10",
+          "type": "passive"
+        },
+        "6": {
+          "x": 33,
+          "y": -10,
+          "name": "9",
+          "type": "passive"
+        },
+        "7": {
+          "x": 33,
+          "y": 0,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 33,
+          "y": 10,
+          "name": "7",
+          "type": "passive"
+        },
+        "9": {
+          "x": 33,
+          "y": 20,
+          "name": "6",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -40,
+        "width": 106,
+        "height": 80
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual06": {
+      "category": "ic",
+      "name": "DUAL06",
+      "file": "ic/dual06.svg",
+      "description": "Unified 2x6 pin package (12 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -25,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -15,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -5,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": 5,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": 15,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": 25,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": 33,
+          "y": -25,
+          "name": "12",
+          "type": "passive"
+        },
+        "7": {
+          "x": 33,
+          "y": -15,
+          "name": "11",
+          "type": "passive"
+        },
+        "8": {
+          "x": 33,
+          "y": -5,
+          "name": "10",
+          "type": "passive"
+        },
+        "9": {
+          "x": 33,
+          "y": 5,
+          "name": "9",
+          "type": "passive"
+        },
+        "10": {
+          "x": 33,
+          "y": 15,
+          "name": "8",
+          "type": "passive"
+        },
+        "11": {
+          "x": 33,
+          "y": 25,
+          "name": "7",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -45,
+        "width": 106,
+        "height": 90
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual08": {
+      "category": "ic",
+      "name": "DUAL08",
+      "file": "ic/dual08.svg",
+      "description": "Unified 2x8 pin package (16 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -35,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -25,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -15,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -5,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": 5,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": 15,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": 25,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": 35,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 33,
+          "y": -35,
+          "name": "16",
+          "type": "passive"
+        },
+        "9": {
+          "x": 33,
+          "y": -25,
+          "name": "15",
+          "type": "passive"
+        },
+        "10": {
+          "x": 33,
+          "y": -15,
+          "name": "14",
+          "type": "passive"
+        },
+        "11": {
+          "x": 33,
+          "y": -5,
+          "name": "13",
+          "type": "passive"
+        },
+        "12": {
+          "x": 33,
+          "y": 5,
+          "name": "12",
+          "type": "passive"
+        },
+        "13": {
+          "x": 33,
+          "y": 15,
+          "name": "11",
+          "type": "passive"
+        },
+        "14": {
+          "x": 33,
+          "y": 25,
+          "name": "10",
+          "type": "passive"
+        },
+        "15": {
+          "x": 33,
+          "y": 35,
+          "name": "9",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -55,
+        "width": 106,
+        "height": 110
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual10": {
+      "category": "ic",
+      "name": "DUAL10",
+      "file": "ic/dual10.svg",
+      "description": "Unified 2x10 pin package (20 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -45,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -35,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -25,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -15,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -5,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": 5,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": 15,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": 25,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": 35,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": 45,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 33,
+          "y": -45,
+          "name": "20",
+          "type": "passive"
+        },
+        "11": {
+          "x": 33,
+          "y": -35,
+          "name": "19",
+          "type": "passive"
+        },
+        "12": {
+          "x": 33,
+          "y": -25,
+          "name": "18",
+          "type": "passive"
+        },
+        "13": {
+          "x": 33,
+          "y": -15,
+          "name": "17",
+          "type": "passive"
+        },
+        "14": {
+          "x": 33,
+          "y": -5,
+          "name": "16",
+          "type": "passive"
+        },
+        "15": {
+          "x": 33,
+          "y": 5,
+          "name": "15",
+          "type": "passive"
+        },
+        "16": {
+          "x": 33,
+          "y": 15,
+          "name": "14",
+          "type": "passive"
+        },
+        "17": {
+          "x": 33,
+          "y": 25,
+          "name": "13",
+          "type": "passive"
+        },
+        "18": {
+          "x": 33,
+          "y": 35,
+          "name": "12",
+          "type": "passive"
+        },
+        "19": {
+          "x": 33,
+          "y": 45,
+          "name": "11",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -65,
+        "width": 106,
+        "height": 130
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual12": {
+      "category": "ic",
+      "name": "DUAL12",
+      "file": "ic/dual12.svg",
+      "description": "Unified 2x12 pin package (24 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -55,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -45,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -35,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -25,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -15,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": -5,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": 5,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": 15,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": 25,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": 35,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -33,
+          "y": 45,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -33,
+          "y": 55,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 33,
+          "y": -55,
+          "name": "24",
+          "type": "passive"
+        },
+        "13": {
+          "x": 33,
+          "y": -45,
+          "name": "23",
+          "type": "passive"
+        },
+        "14": {
+          "x": 33,
+          "y": -35,
+          "name": "22",
+          "type": "passive"
+        },
+        "15": {
+          "x": 33,
+          "y": -25,
+          "name": "21",
+          "type": "passive"
+        },
+        "16": {
+          "x": 33,
+          "y": -15,
+          "name": "20",
+          "type": "passive"
+        },
+        "17": {
+          "x": 33,
+          "y": -5,
+          "name": "19",
+          "type": "passive"
+        },
+        "18": {
+          "x": 33,
+          "y": 5,
+          "name": "18",
+          "type": "passive"
+        },
+        "19": {
+          "x": 33,
+          "y": 15,
+          "name": "17",
+          "type": "passive"
+        },
+        "20": {
+          "x": 33,
+          "y": 25,
+          "name": "16",
+          "type": "passive"
+        },
+        "21": {
+          "x": 33,
+          "y": 35,
+          "name": "15",
+          "type": "passive"
+        },
+        "22": {
+          "x": 33,
+          "y": 45,
+          "name": "14",
+          "type": "passive"
+        },
+        "23": {
+          "x": 33,
+          "y": 55,
+          "name": "13",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -75,
+        "width": 106,
+        "height": 150
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual14": {
+      "category": "ic",
+      "name": "DUAL14",
+      "file": "ic/dual14.svg",
+      "description": "Unified 2x14 pin package (28 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -65,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -55,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -45,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -35,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -25,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": -15,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": -5,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": 5,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": 15,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": 25,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -33,
+          "y": 35,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -33,
+          "y": 45,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -33,
+          "y": 55,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -33,
+          "y": 65,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 33,
+          "y": -65,
+          "name": "28",
+          "type": "passive"
+        },
+        "15": {
+          "x": 33,
+          "y": -55,
+          "name": "27",
+          "type": "passive"
+        },
+        "16": {
+          "x": 33,
+          "y": -45,
+          "name": "26",
+          "type": "passive"
+        },
+        "17": {
+          "x": 33,
+          "y": -35,
+          "name": "25",
+          "type": "passive"
+        },
+        "18": {
+          "x": 33,
+          "y": -25,
+          "name": "24",
+          "type": "passive"
+        },
+        "19": {
+          "x": 33,
+          "y": -15,
+          "name": "23",
+          "type": "passive"
+        },
+        "20": {
+          "x": 33,
+          "y": -5,
+          "name": "22",
+          "type": "passive"
+        },
+        "21": {
+          "x": 33,
+          "y": 5,
+          "name": "21",
+          "type": "passive"
+        },
+        "22": {
+          "x": 33,
+          "y": 15,
+          "name": "20",
+          "type": "passive"
+        },
+        "23": {
+          "x": 33,
+          "y": 25,
+          "name": "19",
+          "type": "passive"
+        },
+        "24": {
+          "x": 33,
+          "y": 35,
+          "name": "18",
+          "type": "passive"
+        },
+        "25": {
+          "x": 33,
+          "y": 45,
+          "name": "17",
+          "type": "passive"
+        },
+        "26": {
+          "x": 33,
+          "y": 55,
+          "name": "16",
+          "type": "passive"
+        },
+        "27": {
+          "x": 33,
+          "y": 65,
+          "name": "15",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -85,
+        "width": 106,
+        "height": 170
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual16": {
+      "category": "ic",
+      "name": "DUAL16",
+      "file": "ic/dual16.svg",
+      "description": "Unified 2x16 pin package (32 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -75,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -65,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -55,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -45,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -35,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": -25,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": -15,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": -5,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": 5,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": 15,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -33,
+          "y": 25,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -33,
+          "y": 35,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -33,
+          "y": 45,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -33,
+          "y": 55,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -33,
+          "y": 65,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -33,
+          "y": 75,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 33,
+          "y": -75,
+          "name": "32",
+          "type": "passive"
+        },
+        "17": {
+          "x": 33,
+          "y": -65,
+          "name": "31",
+          "type": "passive"
+        },
+        "18": {
+          "x": 33,
+          "y": -55,
+          "name": "30",
+          "type": "passive"
+        },
+        "19": {
+          "x": 33,
+          "y": -45,
+          "name": "29",
+          "type": "passive"
+        },
+        "20": {
+          "x": 33,
+          "y": -35,
+          "name": "28",
+          "type": "passive"
+        },
+        "21": {
+          "x": 33,
+          "y": -25,
+          "name": "27",
+          "type": "passive"
+        },
+        "22": {
+          "x": 33,
+          "y": -15,
+          "name": "26",
+          "type": "passive"
+        },
+        "23": {
+          "x": 33,
+          "y": -5,
+          "name": "25",
+          "type": "passive"
+        },
+        "24": {
+          "x": 33,
+          "y": 5,
+          "name": "24",
+          "type": "passive"
+        },
+        "25": {
+          "x": 33,
+          "y": 15,
+          "name": "23",
+          "type": "passive"
+        },
+        "26": {
+          "x": 33,
+          "y": 25,
+          "name": "22",
+          "type": "passive"
+        },
+        "27": {
+          "x": 33,
+          "y": 35,
+          "name": "21",
+          "type": "passive"
+        },
+        "28": {
+          "x": 33,
+          "y": 45,
+          "name": "20",
+          "type": "passive"
+        },
+        "29": {
+          "x": 33,
+          "y": 55,
+          "name": "19",
+          "type": "passive"
+        },
+        "30": {
+          "x": 33,
+          "y": 65,
+          "name": "18",
+          "type": "passive"
+        },
+        "31": {
+          "x": 33,
+          "y": 75,
+          "name": "17",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -95,
+        "width": 106,
+        "height": 190
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual20": {
+      "category": "ic",
+      "name": "DUAL20",
+      "file": "ic/dual20.svg",
+      "description": "Unified 2x20 pin package (40 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -95,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -85,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -75,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -65,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -55,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": -45,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": -35,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": -25,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": -15,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": -5,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -33,
+          "y": 5,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -33,
+          "y": 15,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -33,
+          "y": 25,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -33,
+          "y": 35,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -33,
+          "y": 45,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -33,
+          "y": 55,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": -33,
+          "y": 65,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": -33,
+          "y": 75,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": -33,
+          "y": 85,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": -33,
+          "y": 95,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 33,
+          "y": -95,
+          "name": "40",
+          "type": "passive"
+        },
+        "21": {
+          "x": 33,
+          "y": -85,
+          "name": "39",
+          "type": "passive"
+        },
+        "22": {
+          "x": 33,
+          "y": -75,
+          "name": "38",
+          "type": "passive"
+        },
+        "23": {
+          "x": 33,
+          "y": -65,
+          "name": "37",
+          "type": "passive"
+        },
+        "24": {
+          "x": 33,
+          "y": -55,
+          "name": "36",
+          "type": "passive"
+        },
+        "25": {
+          "x": 33,
+          "y": -45,
+          "name": "35",
+          "type": "passive"
+        },
+        "26": {
+          "x": 33,
+          "y": -35,
+          "name": "34",
+          "type": "passive"
+        },
+        "27": {
+          "x": 33,
+          "y": -25,
+          "name": "33",
+          "type": "passive"
+        },
+        "28": {
+          "x": 33,
+          "y": -15,
+          "name": "32",
+          "type": "passive"
+        },
+        "29": {
+          "x": 33,
+          "y": -5,
+          "name": "31",
+          "type": "passive"
+        },
+        "30": {
+          "x": 33,
+          "y": 5,
+          "name": "30",
+          "type": "passive"
+        },
+        "31": {
+          "x": 33,
+          "y": 15,
+          "name": "29",
+          "type": "passive"
+        },
+        "32": {
+          "x": 33,
+          "y": 25,
+          "name": "28",
+          "type": "passive"
+        },
+        "33": {
+          "x": 33,
+          "y": 35,
+          "name": "27",
+          "type": "passive"
+        },
+        "34": {
+          "x": 33,
+          "y": 45,
+          "name": "26",
+          "type": "passive"
+        },
+        "35": {
+          "x": 33,
+          "y": 55,
+          "name": "25",
+          "type": "passive"
+        },
+        "36": {
+          "x": 33,
+          "y": 65,
+          "name": "24",
+          "type": "passive"
+        },
+        "37": {
+          "x": 33,
+          "y": 75,
+          "name": "23",
+          "type": "passive"
+        },
+        "38": {
+          "x": 33,
+          "y": 85,
+          "name": "22",
+          "type": "passive"
+        },
+        "39": {
+          "x": 33,
+          "y": 95,
+          "name": "21",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -115,
+        "width": 106,
+        "height": 230
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "dual24": {
+      "category": "ic",
+      "name": "DUAL24",
+      "file": "ic/dual24.svg",
+      "description": "Unified 2x24 pin package (48 pins)",
+      "pins": {
+        "0": {
+          "x": -33,
+          "y": -115,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -33,
+          "y": -105,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -33,
+          "y": -95,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -33,
+          "y": -85,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -33,
+          "y": -75,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -33,
+          "y": -65,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -33,
+          "y": -55,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -33,
+          "y": -45,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -33,
+          "y": -35,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -33,
+          "y": -25,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -33,
+          "y": -15,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -33,
+          "y": -5,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -33,
+          "y": 5,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -33,
+          "y": 15,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -33,
+          "y": 25,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -33,
+          "y": 35,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": -33,
+          "y": 45,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": -33,
+          "y": 55,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": -33,
+          "y": 65,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": -33,
+          "y": 75,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": -33,
+          "y": 85,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": -33,
+          "y": 95,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": -33,
+          "y": 105,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": -33,
+          "y": 115,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 33,
+          "y": -115,
+          "name": "48",
+          "type": "passive"
+        },
+        "25": {
+          "x": 33,
+          "y": -105,
+          "name": "47",
+          "type": "passive"
+        },
+        "26": {
+          "x": 33,
+          "y": -95,
+          "name": "46",
+          "type": "passive"
+        },
+        "27": {
+          "x": 33,
+          "y": -85,
+          "name": "45",
+          "type": "passive"
+        },
+        "28": {
+          "x": 33,
+          "y": -75,
+          "name": "44",
+          "type": "passive"
+        },
+        "29": {
+          "x": 33,
+          "y": -65,
+          "name": "43",
+          "type": "passive"
+        },
+        "30": {
+          "x": 33,
+          "y": -55,
+          "name": "42",
+          "type": "passive"
+        },
+        "31": {
+          "x": 33,
+          "y": -45,
+          "name": "41",
+          "type": "passive"
+        },
+        "32": {
+          "x": 33,
+          "y": -35,
+          "name": "40",
+          "type": "passive"
+        },
+        "33": {
+          "x": 33,
+          "y": -25,
+          "name": "39",
+          "type": "passive"
+        },
+        "34": {
+          "x": 33,
+          "y": -15,
+          "name": "38",
+          "type": "passive"
+        },
+        "35": {
+          "x": 33,
+          "y": -5,
+          "name": "37",
+          "type": "passive"
+        },
+        "36": {
+          "x": 33,
+          "y": 5,
+          "name": "36",
+          "type": "passive"
+        },
+        "37": {
+          "x": 33,
+          "y": 15,
+          "name": "35",
+          "type": "passive"
+        },
+        "38": {
+          "x": 33,
+          "y": 25,
+          "name": "34",
+          "type": "passive"
+        },
+        "39": {
+          "x": 33,
+          "y": 35,
+          "name": "33",
+          "type": "passive"
+        },
+        "40": {
+          "x": 33,
+          "y": 45,
+          "name": "32",
+          "type": "passive"
+        },
+        "41": {
+          "x": 33,
+          "y": 55,
+          "name": "31",
+          "type": "passive"
+        },
+        "42": {
+          "x": 33,
+          "y": 65,
+          "name": "30",
+          "type": "passive"
+        },
+        "43": {
+          "x": 33,
+          "y": 75,
+          "name": "29",
+          "type": "passive"
+        },
+        "44": {
+          "x": 33,
+          "y": 85,
+          "name": "28",
+          "type": "passive"
+        },
+        "45": {
+          "x": 33,
+          "y": 95,
+          "name": "27",
+          "type": "passive"
+        },
+        "46": {
+          "x": 33,
+          "y": 105,
+          "name": "26",
+          "type": "passive"
+        },
+        "47": {
+          "x": 33,
+          "y": 115,
+          "name": "25",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -53,
+        "y": -135,
+        "width": 106,
+        "height": 270
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "dual"
+    },
+    "quad04": {
+      "category": "ic",
+      "name": "QUAD04",
+      "file": "ic/quad04.svg",
+      "description": "Unified 4x4 pin package (16 pins)",
+      "pins": {
+        "0": {
+          "x": -26,
+          "y": -36,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -18,
+          "y": -36,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -10,
+          "y": -36,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -2,
+          "y": -36,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": 36,
+          "y": -26,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": 36,
+          "y": -18,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": 36,
+          "y": -10,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": 36,
+          "y": -2,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 26,
+          "y": 36,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": 18,
+          "y": 36,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 10,
+          "y": 36,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 2,
+          "y": 36,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -36,
+          "y": 26,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -36,
+          "y": 18,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -36,
+          "y": 10,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -36,
+          "y": 2,
+          "name": "16",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -56,
+        "y": -51,
+        "width": 112,
+        "height": 102
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad06": {
+      "category": "ic",
+      "name": "QUAD06",
+      "file": "ic/quad06.svg",
+      "description": "Unified 4x6 pin package (24 pins)",
+      "pins": {
+        "0": {
+          "x": -26,
+          "y": -36,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -18,
+          "y": -36,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -10,
+          "y": -36,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -2,
+          "y": -36,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": 6,
+          "y": -36,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": 14,
+          "y": -36,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": 36,
+          "y": -26,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": 36,
+          "y": -18,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 36,
+          "y": -10,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": 36,
+          "y": -2,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 36,
+          "y": 6,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 36,
+          "y": 14,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 26,
+          "y": 36,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 18,
+          "y": 36,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 10,
+          "y": 36,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 2,
+          "y": 36,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": -6,
+          "y": 36,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": -14,
+          "y": 36,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": -36,
+          "y": 26,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": -36,
+          "y": 18,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": -36,
+          "y": 10,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": -36,
+          "y": 2,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": -36,
+          "y": -6,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": -36,
+          "y": -14,
+          "name": "24",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -56,
+        "y": -51,
+        "width": 112,
+        "height": 102
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad08": {
+      "category": "ic",
+      "name": "QUAD08",
+      "file": "ic/quad08.svg",
+      "description": "Unified 4x8 pin package (32 pins)",
+      "pins": {
+        "0": {
+          "x": -28,
+          "y": -38,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -20,
+          "y": -38,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -12,
+          "y": -38,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -4,
+          "y": -38,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": 4,
+          "y": -38,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": 12,
+          "y": -38,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": 20,
+          "y": -38,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": 28,
+          "y": -38,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 38,
+          "y": -28,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": 38,
+          "y": -20,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 38,
+          "y": -12,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 38,
+          "y": -4,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 38,
+          "y": 4,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 38,
+          "y": 12,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 38,
+          "y": 20,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 38,
+          "y": 28,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 28,
+          "y": 38,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 20,
+          "y": 38,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 12,
+          "y": 38,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 4,
+          "y": 38,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": -4,
+          "y": 38,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": -12,
+          "y": 38,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": -20,
+          "y": 38,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": -28,
+          "y": 38,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": -38,
+          "y": 28,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": -38,
+          "y": 20,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": -38,
+          "y": 12,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": -38,
+          "y": 4,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": -38,
+          "y": -4,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": -38,
+          "y": -12,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": -38,
+          "y": -20,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": -38,
+          "y": -28,
+          "name": "32",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -58,
+        "y": -53,
+        "width": 116,
+        "height": 106
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad12": {
+      "category": "ic",
+      "name": "QUAD12",
+      "file": "ic/quad12.svg",
+      "description": "Unified 4x12 pin package (48 pins)",
+      "pins": {
+        "0": {
+          "x": -44,
+          "y": -54,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -36,
+          "y": -54,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -28,
+          "y": -54,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -20,
+          "y": -54,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -12,
+          "y": -54,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -4,
+          "y": -54,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": 4,
+          "y": -54,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": 12,
+          "y": -54,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 20,
+          "y": -54,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": 28,
+          "y": -54,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 36,
+          "y": -54,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 44,
+          "y": -54,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 54,
+          "y": -44,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 54,
+          "y": -36,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 54,
+          "y": -28,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 54,
+          "y": -20,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 54,
+          "y": -12,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 54,
+          "y": -4,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 54,
+          "y": 4,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 54,
+          "y": 12,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 54,
+          "y": 20,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 54,
+          "y": 28,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 54,
+          "y": 36,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 54,
+          "y": 44,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 44,
+          "y": 54,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 36,
+          "y": 54,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 28,
+          "y": 54,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 20,
+          "y": 54,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 12,
+          "y": 54,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 4,
+          "y": 54,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": -4,
+          "y": 54,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": -12,
+          "y": 54,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": -20,
+          "y": 54,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": -28,
+          "y": 54,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": -36,
+          "y": 54,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": -44,
+          "y": 54,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": -54,
+          "y": 44,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": -54,
+          "y": 36,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": -54,
+          "y": 28,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": -54,
+          "y": 20,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": -54,
+          "y": 12,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": -54,
+          "y": 4,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": -54,
+          "y": -4,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": -54,
+          "y": -12,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": -54,
+          "y": -20,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": -54,
+          "y": -28,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": -54,
+          "y": -36,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": -54,
+          "y": -44,
+          "name": "48",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -74,
+        "y": -69,
+        "width": 148,
+        "height": 138
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad16": {
+      "category": "ic",
+      "name": "QUAD16",
+      "file": "ic/quad16.svg",
+      "description": "Unified 4x16 pin package (64 pins)",
+      "pins": {
+        "0": {
+          "x": -60,
+          "y": -70,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -52,
+          "y": -70,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -44,
+          "y": -70,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -36,
+          "y": -70,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -28,
+          "y": -70,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -20,
+          "y": -70,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -12,
+          "y": -70,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -4,
+          "y": -70,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": 4,
+          "y": -70,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": 12,
+          "y": -70,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 20,
+          "y": -70,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 28,
+          "y": -70,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 36,
+          "y": -70,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 44,
+          "y": -70,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 52,
+          "y": -70,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 60,
+          "y": -70,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 70,
+          "y": -60,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 70,
+          "y": -52,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 70,
+          "y": -44,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 70,
+          "y": -36,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 70,
+          "y": -28,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 70,
+          "y": -20,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 70,
+          "y": -12,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 70,
+          "y": -4,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 70,
+          "y": 4,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 70,
+          "y": 12,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 70,
+          "y": 20,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 70,
+          "y": 28,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 70,
+          "y": 36,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 70,
+          "y": 44,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": 70,
+          "y": 52,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": 70,
+          "y": 60,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": 60,
+          "y": 70,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": 52,
+          "y": 70,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": 44,
+          "y": 70,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": 36,
+          "y": 70,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": 28,
+          "y": 70,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": 20,
+          "y": 70,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": 12,
+          "y": 70,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": 4,
+          "y": 70,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": -4,
+          "y": 70,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": -12,
+          "y": 70,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": -20,
+          "y": 70,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": -28,
+          "y": 70,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": -36,
+          "y": 70,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": -44,
+          "y": 70,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": -52,
+          "y": 70,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": -60,
+          "y": 70,
+          "name": "48",
+          "type": "passive"
+        },
+        "48": {
+          "x": -70,
+          "y": 60,
+          "name": "49",
+          "type": "passive"
+        },
+        "49": {
+          "x": -70,
+          "y": 52,
+          "name": "50",
+          "type": "passive"
+        },
+        "50": {
+          "x": -70,
+          "y": 44,
+          "name": "51",
+          "type": "passive"
+        },
+        "51": {
+          "x": -70,
+          "y": 36,
+          "name": "52",
+          "type": "passive"
+        },
+        "52": {
+          "x": -70,
+          "y": 28,
+          "name": "53",
+          "type": "passive"
+        },
+        "53": {
+          "x": -70,
+          "y": 20,
+          "name": "54",
+          "type": "passive"
+        },
+        "54": {
+          "x": -70,
+          "y": 12,
+          "name": "55",
+          "type": "passive"
+        },
+        "55": {
+          "x": -70,
+          "y": 4,
+          "name": "56",
+          "type": "passive"
+        },
+        "56": {
+          "x": -70,
+          "y": -4,
+          "name": "57",
+          "type": "passive"
+        },
+        "57": {
+          "x": -70,
+          "y": -12,
+          "name": "58",
+          "type": "passive"
+        },
+        "58": {
+          "x": -70,
+          "y": -20,
+          "name": "59",
+          "type": "passive"
+        },
+        "59": {
+          "x": -70,
+          "y": -28,
+          "name": "60",
+          "type": "passive"
+        },
+        "60": {
+          "x": -70,
+          "y": -36,
+          "name": "61",
+          "type": "passive"
+        },
+        "61": {
+          "x": -70,
+          "y": -44,
+          "name": "62",
+          "type": "passive"
+        },
+        "62": {
+          "x": -70,
+          "y": -52,
+          "name": "63",
+          "type": "passive"
+        },
+        "63": {
+          "x": -70,
+          "y": -60,
+          "name": "64",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -90,
+        "y": -85,
+        "width": 180,
+        "height": 170
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad20": {
+      "category": "ic",
+      "name": "QUAD20",
+      "file": "ic/quad20.svg",
+      "description": "Unified 4x20 pin package (80 pins)",
+      "pins": {
+        "0": {
+          "x": -76,
+          "y": -86,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -68,
+          "y": -86,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -60,
+          "y": -86,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -52,
+          "y": -86,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -44,
+          "y": -86,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -36,
+          "y": -86,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -28,
+          "y": -86,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -20,
+          "y": -86,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -12,
+          "y": -86,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -4,
+          "y": -86,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": 4,
+          "y": -86,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": 12,
+          "y": -86,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 20,
+          "y": -86,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 28,
+          "y": -86,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 36,
+          "y": -86,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 44,
+          "y": -86,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 52,
+          "y": -86,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 60,
+          "y": -86,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 68,
+          "y": -86,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 76,
+          "y": -86,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 86,
+          "y": -76,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 86,
+          "y": -68,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 86,
+          "y": -60,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 86,
+          "y": -52,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 86,
+          "y": -44,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 86,
+          "y": -36,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 86,
+          "y": -28,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 86,
+          "y": -20,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 86,
+          "y": -12,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 86,
+          "y": -4,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": 86,
+          "y": 4,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": 86,
+          "y": 12,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": 86,
+          "y": 20,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": 86,
+          "y": 28,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": 86,
+          "y": 36,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": 86,
+          "y": 44,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": 86,
+          "y": 52,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": 86,
+          "y": 60,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": 86,
+          "y": 68,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": 86,
+          "y": 76,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": 76,
+          "y": 86,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": 68,
+          "y": 86,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": 60,
+          "y": 86,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": 52,
+          "y": 86,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": 44,
+          "y": 86,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": 36,
+          "y": 86,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": 28,
+          "y": 86,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": 20,
+          "y": 86,
+          "name": "48",
+          "type": "passive"
+        },
+        "48": {
+          "x": 12,
+          "y": 86,
+          "name": "49",
+          "type": "passive"
+        },
+        "49": {
+          "x": 4,
+          "y": 86,
+          "name": "50",
+          "type": "passive"
+        },
+        "50": {
+          "x": -4,
+          "y": 86,
+          "name": "51",
+          "type": "passive"
+        },
+        "51": {
+          "x": -12,
+          "y": 86,
+          "name": "52",
+          "type": "passive"
+        },
+        "52": {
+          "x": -20,
+          "y": 86,
+          "name": "53",
+          "type": "passive"
+        },
+        "53": {
+          "x": -28,
+          "y": 86,
+          "name": "54",
+          "type": "passive"
+        },
+        "54": {
+          "x": -36,
+          "y": 86,
+          "name": "55",
+          "type": "passive"
+        },
+        "55": {
+          "x": -44,
+          "y": 86,
+          "name": "56",
+          "type": "passive"
+        },
+        "56": {
+          "x": -52,
+          "y": 86,
+          "name": "57",
+          "type": "passive"
+        },
+        "57": {
+          "x": -60,
+          "y": 86,
+          "name": "58",
+          "type": "passive"
+        },
+        "58": {
+          "x": -68,
+          "y": 86,
+          "name": "59",
+          "type": "passive"
+        },
+        "59": {
+          "x": -76,
+          "y": 86,
+          "name": "60",
+          "type": "passive"
+        },
+        "60": {
+          "x": -86,
+          "y": 76,
+          "name": "61",
+          "type": "passive"
+        },
+        "61": {
+          "x": -86,
+          "y": 68,
+          "name": "62",
+          "type": "passive"
+        },
+        "62": {
+          "x": -86,
+          "y": 60,
+          "name": "63",
+          "type": "passive"
+        },
+        "63": {
+          "x": -86,
+          "y": 52,
+          "name": "64",
+          "type": "passive"
+        },
+        "64": {
+          "x": -86,
+          "y": 44,
+          "name": "65",
+          "type": "passive"
+        },
+        "65": {
+          "x": -86,
+          "y": 36,
+          "name": "66",
+          "type": "passive"
+        },
+        "66": {
+          "x": -86,
+          "y": 28,
+          "name": "67",
+          "type": "passive"
+        },
+        "67": {
+          "x": -86,
+          "y": 20,
+          "name": "68",
+          "type": "passive"
+        },
+        "68": {
+          "x": -86,
+          "y": 12,
+          "name": "69",
+          "type": "passive"
+        },
+        "69": {
+          "x": -86,
+          "y": 4,
+          "name": "70",
+          "type": "passive"
+        },
+        "70": {
+          "x": -86,
+          "y": -4,
+          "name": "71",
+          "type": "passive"
+        },
+        "71": {
+          "x": -86,
+          "y": -12,
+          "name": "72",
+          "type": "passive"
+        },
+        "72": {
+          "x": -86,
+          "y": -20,
+          "name": "73",
+          "type": "passive"
+        },
+        "73": {
+          "x": -86,
+          "y": -28,
+          "name": "74",
+          "type": "passive"
+        },
+        "74": {
+          "x": -86,
+          "y": -36,
+          "name": "75",
+          "type": "passive"
+        },
+        "75": {
+          "x": -86,
+          "y": -44,
+          "name": "76",
+          "type": "passive"
+        },
+        "76": {
+          "x": -86,
+          "y": -52,
+          "name": "77",
+          "type": "passive"
+        },
+        "77": {
+          "x": -86,
+          "y": -60,
+          "name": "78",
+          "type": "passive"
+        },
+        "78": {
+          "x": -86,
+          "y": -68,
+          "name": "79",
+          "type": "passive"
+        },
+        "79": {
+          "x": -86,
+          "y": -76,
+          "name": "80",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -106,
+        "y": -101,
+        "width": 212,
+        "height": 202
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad25": {
+      "category": "ic",
+      "name": "QUAD25",
+      "file": "ic/quad25.svg",
+      "description": "Unified 4x25 pin package (100 pins)",
+      "pins": {
+        "0": {
+          "x": -96,
+          "y": -106,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -88,
+          "y": -106,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -80,
+          "y": -106,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -72,
+          "y": -106,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -64,
+          "y": -106,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -56,
+          "y": -106,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -48,
+          "y": -106,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -40,
+          "y": -106,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -32,
+          "y": -106,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -24,
+          "y": -106,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -16,
+          "y": -106,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -8,
+          "y": -106,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": 0,
+          "y": -106,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": 8,
+          "y": -106,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": 16,
+          "y": -106,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": 24,
+          "y": -106,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 32,
+          "y": -106,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 40,
+          "y": -106,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 48,
+          "y": -106,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 56,
+          "y": -106,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 64,
+          "y": -106,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 72,
+          "y": -106,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 80,
+          "y": -106,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 88,
+          "y": -106,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 96,
+          "y": -106,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 106,
+          "y": -96,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 106,
+          "y": -88,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 106,
+          "y": -80,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 106,
+          "y": -72,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 106,
+          "y": -64,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": 106,
+          "y": -56,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": 106,
+          "y": -48,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": 106,
+          "y": -40,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": 106,
+          "y": -32,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": 106,
+          "y": -24,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": 106,
+          "y": -16,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": 106,
+          "y": -8,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": 106,
+          "y": 0,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": 106,
+          "y": 8,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": 106,
+          "y": 16,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": 106,
+          "y": 24,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": 106,
+          "y": 32,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": 106,
+          "y": 40,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": 106,
+          "y": 48,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": 106,
+          "y": 56,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": 106,
+          "y": 64,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": 106,
+          "y": 72,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": 106,
+          "y": 80,
+          "name": "48",
+          "type": "passive"
+        },
+        "48": {
+          "x": 106,
+          "y": 88,
+          "name": "49",
+          "type": "passive"
+        },
+        "49": {
+          "x": 106,
+          "y": 96,
+          "name": "50",
+          "type": "passive"
+        },
+        "50": {
+          "x": 96,
+          "y": 106,
+          "name": "51",
+          "type": "passive"
+        },
+        "51": {
+          "x": 88,
+          "y": 106,
+          "name": "52",
+          "type": "passive"
+        },
+        "52": {
+          "x": 80,
+          "y": 106,
+          "name": "53",
+          "type": "passive"
+        },
+        "53": {
+          "x": 72,
+          "y": 106,
+          "name": "54",
+          "type": "passive"
+        },
+        "54": {
+          "x": 64,
+          "y": 106,
+          "name": "55",
+          "type": "passive"
+        },
+        "55": {
+          "x": 56,
+          "y": 106,
+          "name": "56",
+          "type": "passive"
+        },
+        "56": {
+          "x": 48,
+          "y": 106,
+          "name": "57",
+          "type": "passive"
+        },
+        "57": {
+          "x": 40,
+          "y": 106,
+          "name": "58",
+          "type": "passive"
+        },
+        "58": {
+          "x": 32,
+          "y": 106,
+          "name": "59",
+          "type": "passive"
+        },
+        "59": {
+          "x": 24,
+          "y": 106,
+          "name": "60",
+          "type": "passive"
+        },
+        "60": {
+          "x": 16,
+          "y": 106,
+          "name": "61",
+          "type": "passive"
+        },
+        "61": {
+          "x": 8,
+          "y": 106,
+          "name": "62",
+          "type": "passive"
+        },
+        "62": {
+          "x": 0,
+          "y": 106,
+          "name": "63",
+          "type": "passive"
+        },
+        "63": {
+          "x": -8,
+          "y": 106,
+          "name": "64",
+          "type": "passive"
+        },
+        "64": {
+          "x": -16,
+          "y": 106,
+          "name": "65",
+          "type": "passive"
+        },
+        "65": {
+          "x": -24,
+          "y": 106,
+          "name": "66",
+          "type": "passive"
+        },
+        "66": {
+          "x": -32,
+          "y": 106,
+          "name": "67",
+          "type": "passive"
+        },
+        "67": {
+          "x": -40,
+          "y": 106,
+          "name": "68",
+          "type": "passive"
+        },
+        "68": {
+          "x": -48,
+          "y": 106,
+          "name": "69",
+          "type": "passive"
+        },
+        "69": {
+          "x": -56,
+          "y": 106,
+          "name": "70",
+          "type": "passive"
+        },
+        "70": {
+          "x": -64,
+          "y": 106,
+          "name": "71",
+          "type": "passive"
+        },
+        "71": {
+          "x": -72,
+          "y": 106,
+          "name": "72",
+          "type": "passive"
+        },
+        "72": {
+          "x": -80,
+          "y": 106,
+          "name": "73",
+          "type": "passive"
+        },
+        "73": {
+          "x": -88,
+          "y": 106,
+          "name": "74",
+          "type": "passive"
+        },
+        "74": {
+          "x": -96,
+          "y": 106,
+          "name": "75",
+          "type": "passive"
+        },
+        "75": {
+          "x": -106,
+          "y": 96,
+          "name": "76",
+          "type": "passive"
+        },
+        "76": {
+          "x": -106,
+          "y": 88,
+          "name": "77",
+          "type": "passive"
+        },
+        "77": {
+          "x": -106,
+          "y": 80,
+          "name": "78",
+          "type": "passive"
+        },
+        "78": {
+          "x": -106,
+          "y": 72,
+          "name": "79",
+          "type": "passive"
+        },
+        "79": {
+          "x": -106,
+          "y": 64,
+          "name": "80",
+          "type": "passive"
+        },
+        "80": {
+          "x": -106,
+          "y": 56,
+          "name": "81",
+          "type": "passive"
+        },
+        "81": {
+          "x": -106,
+          "y": 48,
+          "name": "82",
+          "type": "passive"
+        },
+        "82": {
+          "x": -106,
+          "y": 40,
+          "name": "83",
+          "type": "passive"
+        },
+        "83": {
+          "x": -106,
+          "y": 32,
+          "name": "84",
+          "type": "passive"
+        },
+        "84": {
+          "x": -106,
+          "y": 24,
+          "name": "85",
+          "type": "passive"
+        },
+        "85": {
+          "x": -106,
+          "y": 16,
+          "name": "86",
+          "type": "passive"
+        },
+        "86": {
+          "x": -106,
+          "y": 8,
+          "name": "87",
+          "type": "passive"
+        },
+        "87": {
+          "x": -106,
+          "y": 0,
+          "name": "88",
+          "type": "passive"
+        },
+        "88": {
+          "x": -106,
+          "y": -8,
+          "name": "89",
+          "type": "passive"
+        },
+        "89": {
+          "x": -106,
+          "y": -16,
+          "name": "90",
+          "type": "passive"
+        },
+        "90": {
+          "x": -106,
+          "y": -24,
+          "name": "91",
+          "type": "passive"
+        },
+        "91": {
+          "x": -106,
+          "y": -32,
+          "name": "92",
+          "type": "passive"
+        },
+        "92": {
+          "x": -106,
+          "y": -40,
+          "name": "93",
+          "type": "passive"
+        },
+        "93": {
+          "x": -106,
+          "y": -48,
+          "name": "94",
+          "type": "passive"
+        },
+        "94": {
+          "x": -106,
+          "y": -56,
+          "name": "95",
+          "type": "passive"
+        },
+        "95": {
+          "x": -106,
+          "y": -64,
+          "name": "96",
+          "type": "passive"
+        },
+        "96": {
+          "x": -106,
+          "y": -72,
+          "name": "97",
+          "type": "passive"
+        },
+        "97": {
+          "x": -106,
+          "y": -80,
+          "name": "98",
+          "type": "passive"
+        },
+        "98": {
+          "x": -106,
+          "y": -88,
+          "name": "99",
+          "type": "passive"
+        },
+        "99": {
+          "x": -106,
+          "y": -96,
+          "name": "100",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -126,
+        "y": -121,
+        "width": 252,
+        "height": 242
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad32": {
+      "category": "ic",
+      "name": "QUAD32",
+      "file": "ic/quad32.svg",
+      "description": "Unified 4x32 pin package (128 pins)",
+      "pins": {
+        "0": {
+          "x": -124,
+          "y": -134,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -116,
+          "y": -134,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -108,
+          "y": -134,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -100,
+          "y": -134,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -92,
+          "y": -134,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -84,
+          "y": -134,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -76,
+          "y": -134,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -68,
+          "y": -134,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -60,
+          "y": -134,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -52,
+          "y": -134,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -44,
+          "y": -134,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -36,
+          "y": -134,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -28,
+          "y": -134,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -20,
+          "y": -134,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -12,
+          "y": -134,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -4,
+          "y": -134,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": 4,
+          "y": -134,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": 12,
+          "y": -134,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 20,
+          "y": -134,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 28,
+          "y": -134,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 36,
+          "y": -134,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 44,
+          "y": -134,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 52,
+          "y": -134,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 60,
+          "y": -134,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 68,
+          "y": -134,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 76,
+          "y": -134,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 84,
+          "y": -134,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 92,
+          "y": -134,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 100,
+          "y": -134,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 108,
+          "y": -134,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": 116,
+          "y": -134,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": 124,
+          "y": -134,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": 134,
+          "y": -124,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": 134,
+          "y": -116,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": 134,
+          "y": -108,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": 134,
+          "y": -100,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": 134,
+          "y": -92,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": 134,
+          "y": -84,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": 134,
+          "y": -76,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": 134,
+          "y": -68,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": 134,
+          "y": -60,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": 134,
+          "y": -52,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": 134,
+          "y": -44,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": 134,
+          "y": -36,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": 134,
+          "y": -28,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": 134,
+          "y": -20,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": 134,
+          "y": -12,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": 134,
+          "y": -4,
+          "name": "48",
+          "type": "passive"
+        },
+        "48": {
+          "x": 134,
+          "y": 4,
+          "name": "49",
+          "type": "passive"
+        },
+        "49": {
+          "x": 134,
+          "y": 12,
+          "name": "50",
+          "type": "passive"
+        },
+        "50": {
+          "x": 134,
+          "y": 20,
+          "name": "51",
+          "type": "passive"
+        },
+        "51": {
+          "x": 134,
+          "y": 28,
+          "name": "52",
+          "type": "passive"
+        },
+        "52": {
+          "x": 134,
+          "y": 36,
+          "name": "53",
+          "type": "passive"
+        },
+        "53": {
+          "x": 134,
+          "y": 44,
+          "name": "54",
+          "type": "passive"
+        },
+        "54": {
+          "x": 134,
+          "y": 52,
+          "name": "55",
+          "type": "passive"
+        },
+        "55": {
+          "x": 134,
+          "y": 60,
+          "name": "56",
+          "type": "passive"
+        },
+        "56": {
+          "x": 134,
+          "y": 68,
+          "name": "57",
+          "type": "passive"
+        },
+        "57": {
+          "x": 134,
+          "y": 76,
+          "name": "58",
+          "type": "passive"
+        },
+        "58": {
+          "x": 134,
+          "y": 84,
+          "name": "59",
+          "type": "passive"
+        },
+        "59": {
+          "x": 134,
+          "y": 92,
+          "name": "60",
+          "type": "passive"
+        },
+        "60": {
+          "x": 134,
+          "y": 100,
+          "name": "61",
+          "type": "passive"
+        },
+        "61": {
+          "x": 134,
+          "y": 108,
+          "name": "62",
+          "type": "passive"
+        },
+        "62": {
+          "x": 134,
+          "y": 116,
+          "name": "63",
+          "type": "passive"
+        },
+        "63": {
+          "x": 134,
+          "y": 124,
+          "name": "64",
+          "type": "passive"
+        },
+        "64": {
+          "x": 124,
+          "y": 134,
+          "name": "65",
+          "type": "passive"
+        },
+        "65": {
+          "x": 116,
+          "y": 134,
+          "name": "66",
+          "type": "passive"
+        },
+        "66": {
+          "x": 108,
+          "y": 134,
+          "name": "67",
+          "type": "passive"
+        },
+        "67": {
+          "x": 100,
+          "y": 134,
+          "name": "68",
+          "type": "passive"
+        },
+        "68": {
+          "x": 92,
+          "y": 134,
+          "name": "69",
+          "type": "passive"
+        },
+        "69": {
+          "x": 84,
+          "y": 134,
+          "name": "70",
+          "type": "passive"
+        },
+        "70": {
+          "x": 76,
+          "y": 134,
+          "name": "71",
+          "type": "passive"
+        },
+        "71": {
+          "x": 68,
+          "y": 134,
+          "name": "72",
+          "type": "passive"
+        },
+        "72": {
+          "x": 60,
+          "y": 134,
+          "name": "73",
+          "type": "passive"
+        },
+        "73": {
+          "x": 52,
+          "y": 134,
+          "name": "74",
+          "type": "passive"
+        },
+        "74": {
+          "x": 44,
+          "y": 134,
+          "name": "75",
+          "type": "passive"
+        },
+        "75": {
+          "x": 36,
+          "y": 134,
+          "name": "76",
+          "type": "passive"
+        },
+        "76": {
+          "x": 28,
+          "y": 134,
+          "name": "77",
+          "type": "passive"
+        },
+        "77": {
+          "x": 20,
+          "y": 134,
+          "name": "78",
+          "type": "passive"
+        },
+        "78": {
+          "x": 12,
+          "y": 134,
+          "name": "79",
+          "type": "passive"
+        },
+        "79": {
+          "x": 4,
+          "y": 134,
+          "name": "80",
+          "type": "passive"
+        },
+        "80": {
+          "x": -4,
+          "y": 134,
+          "name": "81",
+          "type": "passive"
+        },
+        "81": {
+          "x": -12,
+          "y": 134,
+          "name": "82",
+          "type": "passive"
+        },
+        "82": {
+          "x": -20,
+          "y": 134,
+          "name": "83",
+          "type": "passive"
+        },
+        "83": {
+          "x": -28,
+          "y": 134,
+          "name": "84",
+          "type": "passive"
+        },
+        "84": {
+          "x": -36,
+          "y": 134,
+          "name": "85",
+          "type": "passive"
+        },
+        "85": {
+          "x": -44,
+          "y": 134,
+          "name": "86",
+          "type": "passive"
+        },
+        "86": {
+          "x": -52,
+          "y": 134,
+          "name": "87",
+          "type": "passive"
+        },
+        "87": {
+          "x": -60,
+          "y": 134,
+          "name": "88",
+          "type": "passive"
+        },
+        "88": {
+          "x": -68,
+          "y": 134,
+          "name": "89",
+          "type": "passive"
+        },
+        "89": {
+          "x": -76,
+          "y": 134,
+          "name": "90",
+          "type": "passive"
+        },
+        "90": {
+          "x": -84,
+          "y": 134,
+          "name": "91",
+          "type": "passive"
+        },
+        "91": {
+          "x": -92,
+          "y": 134,
+          "name": "92",
+          "type": "passive"
+        },
+        "92": {
+          "x": -100,
+          "y": 134,
+          "name": "93",
+          "type": "passive"
+        },
+        "93": {
+          "x": -108,
+          "y": 134,
+          "name": "94",
+          "type": "passive"
+        },
+        "94": {
+          "x": -116,
+          "y": 134,
+          "name": "95",
+          "type": "passive"
+        },
+        "95": {
+          "x": -124,
+          "y": 134,
+          "name": "96",
+          "type": "passive"
+        },
+        "96": {
+          "x": -134,
+          "y": 124,
+          "name": "97",
+          "type": "passive"
+        },
+        "97": {
+          "x": -134,
+          "y": 116,
+          "name": "98",
+          "type": "passive"
+        },
+        "98": {
+          "x": -134,
+          "y": 108,
+          "name": "99",
+          "type": "passive"
+        },
+        "99": {
+          "x": -134,
+          "y": 100,
+          "name": "100",
+          "type": "passive"
+        },
+        "100": {
+          "x": -134,
+          "y": 92,
+          "name": "101",
+          "type": "passive"
+        },
+        "101": {
+          "x": -134,
+          "y": 84,
+          "name": "102",
+          "type": "passive"
+        },
+        "102": {
+          "x": -134,
+          "y": 76,
+          "name": "103",
+          "type": "passive"
+        },
+        "103": {
+          "x": -134,
+          "y": 68,
+          "name": "104",
+          "type": "passive"
+        },
+        "104": {
+          "x": -134,
+          "y": 60,
+          "name": "105",
+          "type": "passive"
+        },
+        "105": {
+          "x": -134,
+          "y": 52,
+          "name": "106",
+          "type": "passive"
+        },
+        "106": {
+          "x": -134,
+          "y": 44,
+          "name": "107",
+          "type": "passive"
+        },
+        "107": {
+          "x": -134,
+          "y": 36,
+          "name": "108",
+          "type": "passive"
+        },
+        "108": {
+          "x": -134,
+          "y": 28,
+          "name": "109",
+          "type": "passive"
+        },
+        "109": {
+          "x": -134,
+          "y": 20,
+          "name": "110",
+          "type": "passive"
+        },
+        "110": {
+          "x": -134,
+          "y": 12,
+          "name": "111",
+          "type": "passive"
+        },
+        "111": {
+          "x": -134,
+          "y": 4,
+          "name": "112",
+          "type": "passive"
+        },
+        "112": {
+          "x": -134,
+          "y": -4,
+          "name": "113",
+          "type": "passive"
+        },
+        "113": {
+          "x": -134,
+          "y": -12,
+          "name": "114",
+          "type": "passive"
+        },
+        "114": {
+          "x": -134,
+          "y": -20,
+          "name": "115",
+          "type": "passive"
+        },
+        "115": {
+          "x": -134,
+          "y": -28,
+          "name": "116",
+          "type": "passive"
+        },
+        "116": {
+          "x": -134,
+          "y": -36,
+          "name": "117",
+          "type": "passive"
+        },
+        "117": {
+          "x": -134,
+          "y": -44,
+          "name": "118",
+          "type": "passive"
+        },
+        "118": {
+          "x": -134,
+          "y": -52,
+          "name": "119",
+          "type": "passive"
+        },
+        "119": {
+          "x": -134,
+          "y": -60,
+          "name": "120",
+          "type": "passive"
+        },
+        "120": {
+          "x": -134,
+          "y": -68,
+          "name": "121",
+          "type": "passive"
+        },
+        "121": {
+          "x": -134,
+          "y": -76,
+          "name": "122",
+          "type": "passive"
+        },
+        "122": {
+          "x": -134,
+          "y": -84,
+          "name": "123",
+          "type": "passive"
+        },
+        "123": {
+          "x": -134,
+          "y": -92,
+          "name": "124",
+          "type": "passive"
+        },
+        "124": {
+          "x": -134,
+          "y": -100,
+          "name": "125",
+          "type": "passive"
+        },
+        "125": {
+          "x": -134,
+          "y": -108,
+          "name": "126",
+          "type": "passive"
+        },
+        "126": {
+          "x": -134,
+          "y": -116,
+          "name": "127",
+          "type": "passive"
+        },
+        "127": {
+          "x": -134,
+          "y": -124,
+          "name": "128",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -154,
+        "y": -149,
+        "width": 308,
+        "height": 298
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
+    },
+    "quad36": {
+      "category": "ic",
+      "name": "QUAD36",
+      "file": "ic/quad36.svg",
+      "description": "Unified 4x36 pin package (144 pins)",
+      "pins": {
+        "0": {
+          "x": -140,
+          "y": -150,
+          "name": "1",
+          "type": "passive"
+        },
+        "1": {
+          "x": -132,
+          "y": -150,
+          "name": "2",
+          "type": "passive"
+        },
+        "2": {
+          "x": -124,
+          "y": -150,
+          "name": "3",
+          "type": "passive"
+        },
+        "3": {
+          "x": -116,
+          "y": -150,
+          "name": "4",
+          "type": "passive"
+        },
+        "4": {
+          "x": -108,
+          "y": -150,
+          "name": "5",
+          "type": "passive"
+        },
+        "5": {
+          "x": -100,
+          "y": -150,
+          "name": "6",
+          "type": "passive"
+        },
+        "6": {
+          "x": -92,
+          "y": -150,
+          "name": "7",
+          "type": "passive"
+        },
+        "7": {
+          "x": -84,
+          "y": -150,
+          "name": "8",
+          "type": "passive"
+        },
+        "8": {
+          "x": -76,
+          "y": -150,
+          "name": "9",
+          "type": "passive"
+        },
+        "9": {
+          "x": -68,
+          "y": -150,
+          "name": "10",
+          "type": "passive"
+        },
+        "10": {
+          "x": -60,
+          "y": -150,
+          "name": "11",
+          "type": "passive"
+        },
+        "11": {
+          "x": -52,
+          "y": -150,
+          "name": "12",
+          "type": "passive"
+        },
+        "12": {
+          "x": -44,
+          "y": -150,
+          "name": "13",
+          "type": "passive"
+        },
+        "13": {
+          "x": -36,
+          "y": -150,
+          "name": "14",
+          "type": "passive"
+        },
+        "14": {
+          "x": -28,
+          "y": -150,
+          "name": "15",
+          "type": "passive"
+        },
+        "15": {
+          "x": -20,
+          "y": -150,
+          "name": "16",
+          "type": "passive"
+        },
+        "16": {
+          "x": -12,
+          "y": -150,
+          "name": "17",
+          "type": "passive"
+        },
+        "17": {
+          "x": -4,
+          "y": -150,
+          "name": "18",
+          "type": "passive"
+        },
+        "18": {
+          "x": 4,
+          "y": -150,
+          "name": "19",
+          "type": "passive"
+        },
+        "19": {
+          "x": 12,
+          "y": -150,
+          "name": "20",
+          "type": "passive"
+        },
+        "20": {
+          "x": 20,
+          "y": -150,
+          "name": "21",
+          "type": "passive"
+        },
+        "21": {
+          "x": 28,
+          "y": -150,
+          "name": "22",
+          "type": "passive"
+        },
+        "22": {
+          "x": 36,
+          "y": -150,
+          "name": "23",
+          "type": "passive"
+        },
+        "23": {
+          "x": 44,
+          "y": -150,
+          "name": "24",
+          "type": "passive"
+        },
+        "24": {
+          "x": 52,
+          "y": -150,
+          "name": "25",
+          "type": "passive"
+        },
+        "25": {
+          "x": 60,
+          "y": -150,
+          "name": "26",
+          "type": "passive"
+        },
+        "26": {
+          "x": 68,
+          "y": -150,
+          "name": "27",
+          "type": "passive"
+        },
+        "27": {
+          "x": 76,
+          "y": -150,
+          "name": "28",
+          "type": "passive"
+        },
+        "28": {
+          "x": 84,
+          "y": -150,
+          "name": "29",
+          "type": "passive"
+        },
+        "29": {
+          "x": 92,
+          "y": -150,
+          "name": "30",
+          "type": "passive"
+        },
+        "30": {
+          "x": 100,
+          "y": -150,
+          "name": "31",
+          "type": "passive"
+        },
+        "31": {
+          "x": 108,
+          "y": -150,
+          "name": "32",
+          "type": "passive"
+        },
+        "32": {
+          "x": 116,
+          "y": -150,
+          "name": "33",
+          "type": "passive"
+        },
+        "33": {
+          "x": 124,
+          "y": -150,
+          "name": "34",
+          "type": "passive"
+        },
+        "34": {
+          "x": 132,
+          "y": -150,
+          "name": "35",
+          "type": "passive"
+        },
+        "35": {
+          "x": 140,
+          "y": -150,
+          "name": "36",
+          "type": "passive"
+        },
+        "36": {
+          "x": 150,
+          "y": -140,
+          "name": "37",
+          "type": "passive"
+        },
+        "37": {
+          "x": 150,
+          "y": -132,
+          "name": "38",
+          "type": "passive"
+        },
+        "38": {
+          "x": 150,
+          "y": -124,
+          "name": "39",
+          "type": "passive"
+        },
+        "39": {
+          "x": 150,
+          "y": -116,
+          "name": "40",
+          "type": "passive"
+        },
+        "40": {
+          "x": 150,
+          "y": -108,
+          "name": "41",
+          "type": "passive"
+        },
+        "41": {
+          "x": 150,
+          "y": -100,
+          "name": "42",
+          "type": "passive"
+        },
+        "42": {
+          "x": 150,
+          "y": -92,
+          "name": "43",
+          "type": "passive"
+        },
+        "43": {
+          "x": 150,
+          "y": -84,
+          "name": "44",
+          "type": "passive"
+        },
+        "44": {
+          "x": 150,
+          "y": -76,
+          "name": "45",
+          "type": "passive"
+        },
+        "45": {
+          "x": 150,
+          "y": -68,
+          "name": "46",
+          "type": "passive"
+        },
+        "46": {
+          "x": 150,
+          "y": -60,
+          "name": "47",
+          "type": "passive"
+        },
+        "47": {
+          "x": 150,
+          "y": -52,
+          "name": "48",
+          "type": "passive"
+        },
+        "48": {
+          "x": 150,
+          "y": -44,
+          "name": "49",
+          "type": "passive"
+        },
+        "49": {
+          "x": 150,
+          "y": -36,
+          "name": "50",
+          "type": "passive"
+        },
+        "50": {
+          "x": 150,
+          "y": -28,
+          "name": "51",
+          "type": "passive"
+        },
+        "51": {
+          "x": 150,
+          "y": -20,
+          "name": "52",
+          "type": "passive"
+        },
+        "52": {
+          "x": 150,
+          "y": -12,
+          "name": "53",
+          "type": "passive"
+        },
+        "53": {
+          "x": 150,
+          "y": -4,
+          "name": "54",
+          "type": "passive"
+        },
+        "54": {
+          "x": 150,
+          "y": 4,
+          "name": "55",
+          "type": "passive"
+        },
+        "55": {
+          "x": 150,
+          "y": 12,
+          "name": "56",
+          "type": "passive"
+        },
+        "56": {
+          "x": 150,
+          "y": 20,
+          "name": "57",
+          "type": "passive"
+        },
+        "57": {
+          "x": 150,
+          "y": 28,
+          "name": "58",
+          "type": "passive"
+        },
+        "58": {
+          "x": 150,
+          "y": 36,
+          "name": "59",
+          "type": "passive"
+        },
+        "59": {
+          "x": 150,
+          "y": 44,
+          "name": "60",
+          "type": "passive"
+        },
+        "60": {
+          "x": 150,
+          "y": 52,
+          "name": "61",
+          "type": "passive"
+        },
+        "61": {
+          "x": 150,
+          "y": 60,
+          "name": "62",
+          "type": "passive"
+        },
+        "62": {
+          "x": 150,
+          "y": 68,
+          "name": "63",
+          "type": "passive"
+        },
+        "63": {
+          "x": 150,
+          "y": 76,
+          "name": "64",
+          "type": "passive"
+        },
+        "64": {
+          "x": 150,
+          "y": 84,
+          "name": "65",
+          "type": "passive"
+        },
+        "65": {
+          "x": 150,
+          "y": 92,
+          "name": "66",
+          "type": "passive"
+        },
+        "66": {
+          "x": 150,
+          "y": 100,
+          "name": "67",
+          "type": "passive"
+        },
+        "67": {
+          "x": 150,
+          "y": 108,
+          "name": "68",
+          "type": "passive"
+        },
+        "68": {
+          "x": 150,
+          "y": 116,
+          "name": "69",
+          "type": "passive"
+        },
+        "69": {
+          "x": 150,
+          "y": 124,
+          "name": "70",
+          "type": "passive"
+        },
+        "70": {
+          "x": 150,
+          "y": 132,
+          "name": "71",
+          "type": "passive"
+        },
+        "71": {
+          "x": 150,
+          "y": 140,
+          "name": "72",
+          "type": "passive"
+        },
+        "72": {
+          "x": 140,
+          "y": 150,
+          "name": "73",
+          "type": "passive"
+        },
+        "73": {
+          "x": 132,
+          "y": 150,
+          "name": "74",
+          "type": "passive"
+        },
+        "74": {
+          "x": 124,
+          "y": 150,
+          "name": "75",
+          "type": "passive"
+        },
+        "75": {
+          "x": 116,
+          "y": 150,
+          "name": "76",
+          "type": "passive"
+        },
+        "76": {
+          "x": 108,
+          "y": 150,
+          "name": "77",
+          "type": "passive"
+        },
+        "77": {
+          "x": 100,
+          "y": 150,
+          "name": "78",
+          "type": "passive"
+        },
+        "78": {
+          "x": 92,
+          "y": 150,
+          "name": "79",
+          "type": "passive"
+        },
+        "79": {
+          "x": 84,
+          "y": 150,
+          "name": "80",
+          "type": "passive"
+        },
+        "80": {
+          "x": 76,
+          "y": 150,
+          "name": "81",
+          "type": "passive"
+        },
+        "81": {
+          "x": 68,
+          "y": 150,
+          "name": "82",
+          "type": "passive"
+        },
+        "82": {
+          "x": 60,
+          "y": 150,
+          "name": "83",
+          "type": "passive"
+        },
+        "83": {
+          "x": 52,
+          "y": 150,
+          "name": "84",
+          "type": "passive"
+        },
+        "84": {
+          "x": 44,
+          "y": 150,
+          "name": "85",
+          "type": "passive"
+        },
+        "85": {
+          "x": 36,
+          "y": 150,
+          "name": "86",
+          "type": "passive"
+        },
+        "86": {
+          "x": 28,
+          "y": 150,
+          "name": "87",
+          "type": "passive"
+        },
+        "87": {
+          "x": 20,
+          "y": 150,
+          "name": "88",
+          "type": "passive"
+        },
+        "88": {
+          "x": 12,
+          "y": 150,
+          "name": "89",
+          "type": "passive"
+        },
+        "89": {
+          "x": 4,
+          "y": 150,
+          "name": "90",
+          "type": "passive"
+        },
+        "90": {
+          "x": -4,
+          "y": 150,
+          "name": "91",
+          "type": "passive"
+        },
+        "91": {
+          "x": -12,
+          "y": 150,
+          "name": "92",
+          "type": "passive"
+        },
+        "92": {
+          "x": -20,
+          "y": 150,
+          "name": "93",
+          "type": "passive"
+        },
+        "93": {
+          "x": -28,
+          "y": 150,
+          "name": "94",
+          "type": "passive"
+        },
+        "94": {
+          "x": -36,
+          "y": 150,
+          "name": "95",
+          "type": "passive"
+        },
+        "95": {
+          "x": -44,
+          "y": 150,
+          "name": "96",
+          "type": "passive"
+        },
+        "96": {
+          "x": -52,
+          "y": 150,
+          "name": "97",
+          "type": "passive"
+        },
+        "97": {
+          "x": -60,
+          "y": 150,
+          "name": "98",
+          "type": "passive"
+        },
+        "98": {
+          "x": -68,
+          "y": 150,
+          "name": "99",
+          "type": "passive"
+        },
+        "99": {
+          "x": -76,
+          "y": 150,
+          "name": "100",
+          "type": "passive"
+        },
+        "100": {
+          "x": -84,
+          "y": 150,
+          "name": "101",
+          "type": "passive"
+        },
+        "101": {
+          "x": -92,
+          "y": 150,
+          "name": "102",
+          "type": "passive"
+        },
+        "102": {
+          "x": -100,
+          "y": 150,
+          "name": "103",
+          "type": "passive"
+        },
+        "103": {
+          "x": -108,
+          "y": 150,
+          "name": "104",
+          "type": "passive"
+        },
+        "104": {
+          "x": -116,
+          "y": 150,
+          "name": "105",
+          "type": "passive"
+        },
+        "105": {
+          "x": -124,
+          "y": 150,
+          "name": "106",
+          "type": "passive"
+        },
+        "106": {
+          "x": -132,
+          "y": 150,
+          "name": "107",
+          "type": "passive"
+        },
+        "107": {
+          "x": -140,
+          "y": 150,
+          "name": "108",
+          "type": "passive"
+        },
+        "108": {
+          "x": -150,
+          "y": 140,
+          "name": "109",
+          "type": "passive"
+        },
+        "109": {
+          "x": -150,
+          "y": 132,
+          "name": "110",
+          "type": "passive"
+        },
+        "110": {
+          "x": -150,
+          "y": 124,
+          "name": "111",
+          "type": "passive"
+        },
+        "111": {
+          "x": -150,
+          "y": 116,
+          "name": "112",
+          "type": "passive"
+        },
+        "112": {
+          "x": -150,
+          "y": 108,
+          "name": "113",
+          "type": "passive"
+        },
+        "113": {
+          "x": -150,
+          "y": 100,
+          "name": "114",
+          "type": "passive"
+        },
+        "114": {
+          "x": -150,
+          "y": 92,
+          "name": "115",
+          "type": "passive"
+        },
+        "115": {
+          "x": -150,
+          "y": 84,
+          "name": "116",
+          "type": "passive"
+        },
+        "116": {
+          "x": -150,
+          "y": 76,
+          "name": "117",
+          "type": "passive"
+        },
+        "117": {
+          "x": -150,
+          "y": 68,
+          "name": "118",
+          "type": "passive"
+        },
+        "118": {
+          "x": -150,
+          "y": 60,
+          "name": "119",
+          "type": "passive"
+        },
+        "119": {
+          "x": -150,
+          "y": 52,
+          "name": "120",
+          "type": "passive"
+        },
+        "120": {
+          "x": -150,
+          "y": 44,
+          "name": "121",
+          "type": "passive"
+        },
+        "121": {
+          "x": -150,
+          "y": 36,
+          "name": "122",
+          "type": "passive"
+        },
+        "122": {
+          "x": -150,
+          "y": 28,
+          "name": "123",
+          "type": "passive"
+        },
+        "123": {
+          "x": -150,
+          "y": 20,
+          "name": "124",
+          "type": "passive"
+        },
+        "124": {
+          "x": -150,
+          "y": 12,
+          "name": "125",
+          "type": "passive"
+        },
+        "125": {
+          "x": -150,
+          "y": 4,
+          "name": "126",
+          "type": "passive"
+        },
+        "126": {
+          "x": -150,
+          "y": -4,
+          "name": "127",
+          "type": "passive"
+        },
+        "127": {
+          "x": -150,
+          "y": -12,
+          "name": "128",
+          "type": "passive"
+        },
+        "128": {
+          "x": -150,
+          "y": -20,
+          "name": "129",
+          "type": "passive"
+        },
+        "129": {
+          "x": -150,
+          "y": -28,
+          "name": "130",
+          "type": "passive"
+        },
+        "130": {
+          "x": -150,
+          "y": -36,
+          "name": "131",
+          "type": "passive"
+        },
+        "131": {
+          "x": -150,
+          "y": -44,
+          "name": "132",
+          "type": "passive"
+        },
+        "132": {
+          "x": -150,
+          "y": -52,
+          "name": "133",
+          "type": "passive"
+        },
+        "133": {
+          "x": -150,
+          "y": -60,
+          "name": "134",
+          "type": "passive"
+        },
+        "134": {
+          "x": -150,
+          "y": -68,
+          "name": "135",
+          "type": "passive"
+        },
+        "135": {
+          "x": -150,
+          "y": -76,
+          "name": "136",
+          "type": "passive"
+        },
+        "136": {
+          "x": -150,
+          "y": -84,
+          "name": "137",
+          "type": "passive"
+        },
+        "137": {
+          "x": -150,
+          "y": -92,
+          "name": "138",
+          "type": "passive"
+        },
+        "138": {
+          "x": -150,
+          "y": -100,
+          "name": "139",
+          "type": "passive"
+        },
+        "139": {
+          "x": -150,
+          "y": -108,
+          "name": "140",
+          "type": "passive"
+        },
+        "140": {
+          "x": -150,
+          "y": -116,
+          "name": "141",
+          "type": "passive"
+        },
+        "141": {
+          "x": -150,
+          "y": -124,
+          "name": "142",
+          "type": "passive"
+        },
+        "142": {
+          "x": -150,
+          "y": -132,
+          "name": "143",
+          "type": "passive"
+        },
+        "143": {
+          "x": -150,
+          "y": -140,
+          "name": "144",
+          "type": "passive"
+        }
+      },
+      "bbox": {
+        "x": -170,
+        "y": -165,
+        "width": 340,
+        "height": 330
+      },
+      "defaults": {
+        "rotation": 0,
+        "labelPosition": "below"
+      },
+      "unifiedTemplate": true,
+      "packageType": "quad"
     }
   }
 }

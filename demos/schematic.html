@@ -62,6 +62,26 @@
       .symbol-list li {
         margin: 5px 0;
       }
+      .pin-label {
+        font-family: monospace;
+        font-size: 9px;
+        fill: #0066cc;
+        font-weight: bold;
+      }
+      .dynamic-pin-name {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 8px;
+        fill: #d32f2f;
+        font-weight: 600;
+      }
+      .demo-info {
+        background: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 12px;
+        margin: 15px 0;
+        border-radius: 4px;
+        font-size: 14px;
+      }
     </style>
   </head>
   <body>
@@ -74,7 +94,10 @@
         <li><strong>Passive:</strong> resistor, capacitor, inductor, crystal</li>
         <li><strong>Semiconductor:</strong> led, diode</li>
         <li><strong>Mechanical:</strong> button</li>
-        <li><strong>IC:</strong> regulator</li>
+        <li>
+          <strong>IC:</strong> regulator, dualxx (unified 2xN: dual04~dual24), quadxx (unified 4xN:
+          quad04~quad36)
+        </li>
       </ul>
     </div>
 
@@ -169,6 +192,90 @@ schematic LR
 
     <hr class="divider" />
 
+    <!-- Demo 4: STM32F030F4 Unified DUAL10 Package Test -->
+    <h3>Demo 4: STM32F030F4 (Unified DUAL10 - 2×10 Pin Package)</h3>
+    <pre class="mermaid">
+%% STM32F030F4P6原理图示例 - 使用 %% 作为注释标记
+schematic LR
+    %% Meta-Data Subgraph: 只做符号声明，不渲染此页
+    %% 后续页面通过 symbol@partName 语法引用这些符号定义
+    subgraph meta-data["[DECLARATION ONLY] Symbol Library"]
+        %% 全局页面设置
+        page_setting{
+            paper: A4,
+            paper-dir: landscape,
+            scale: 1.0,
+            dpi: 300
+        }
+        
+        title_block{
+            title: "STM32F030F4P6最小系统",
+            date: "2026-01-20",
+            rev: "V1.0",
+            company: "示例科技有限公司",
+            comment: "基于mermaid语法的原理图设计"
+        }
+
+        %% === 符号定义 1: STM32F030F4P6 (TSSOP20封装) ===
+        %% 根据规格书DocID024849 Rev 1 Table 11 Pin definitions
+        symbol@STM32F030F4P6{
+            name: "STM32F030F4P6",
+            footprint: "TSSOP20",
+            desc: "32位 Cortex-M0 MCU，16KB Flash/4KB SRAM",
+            manufacturer: "STMicroelectronics",
+            voltage: "2.4~3.6V",
+            max_freq: "48MHz",
+            shape: "dual10",
+            styleClass: "ic-symbol",
+            pins: [
+                %% Power & Ground
+                {num: 1, name: "VDD", type: "power", desc: "Digital power supply"},
+                {num: 8, name: "VSSA", type: "ground", desc: "Analog ground"},
+                {num: 9, name: "VDDA", type: "power", desc: "Analog power supply"},
+                
+                %% Reset
+                {num: 7, name: "NRST", type: "reset", desc: "Device reset input/internal reset output (active low)"},
+                
+                %% Clock pins
+                {num: 3, name: "PC14-OSC32_IN", type: "io", desc: "32.768kHz crystal input"},
+                {num: 4, name: "PC15-OSC32_OUT", type: "io", desc: "32.768kHz crystal output"},
+                {num: 5, name: "PF0-OSC_IN", type: "io", desc: "HSE crystal input (4-32MHz)"},
+                {num: 6, name: "PF1-OSC_OUT", type: "io", desc: "HSE crystal output"},
+                
+                %% GPIO Port A
+                {num: 10, name: "PA0", type: "io", desc: "ADC_IN0, WKUP1, USART1_CTS, RTC_TAMP2"},
+                {num: 11, name: "PA1", type: "io", desc: "ADC_IN1, USART1_RTS, EVENTOUT"},
+                {num: 12, name: "PA2", type: "io", desc: "ADC_IN2, USART1_TX"},
+                {num: 13, name: "PA3", type: "io", desc: "ADC_IN3, USART1_RX"},
+                {num: 14, name: "PA4", type: "io", desc: "ADC_IN4, SPI1_NSS, USART1_CK"},
+                {num: 15, name: "PA5", type: "io", desc: "ADC_IN5, SPI1_SCK"},
+                {num: 16, name: "PA6", type: "io", desc: "ADC_IN6, SPI1_MISO, TIM1_BKIN, TIM3_CH1"},
+                {num: 17, name: "PA7", type: "io", desc: "ADC_IN7, SPI1_MOSI, TIM3_CH2, TIM1_CH1N"},
+                
+                %% GPIO Port B
+                {num: 18, name: "PB0", type: "io", desc: "ADC_IN8, TIM3_CH3, TIM1_CH2N"},
+                {num: 19, name: "PB1", type: "io", desc: "ADC_IN9, TIM3_CH4, TIM14_CH1, TIM1_CH3N"},
+                {num: 20, name: "PB2", type: "io", desc: "General purpose I/O"},
+                
+                %% Special function
+                {num: 2, name: "PC13", type: "io", desc: "RTC_TAMP1, RTC_TS, RTC_OUT, WKUP2"}
+            ]
+        }
+        
+    end
+
+    %% 页面2：IO接口
+    subgraph Page2["Page 2: IO接口"]
+        [component STM32F030F4P6 stm32]
+        [stm32].(1) (--) (5V_IN)
+        [stm32].(8) (--) (GND)
+        [stm32].(9) (--) (3V3_OUT)
+
+    end
+    </pre>
+
+    <hr class="divider" />
+
     <!-- 状态显示区域 -->
     <div
       id="status"
@@ -238,11 +345,17 @@ schematic LR
       });
 
       setTimeout(() => {
+        // renderDynamicPinNames function removed
+
         const svgs = document.querySelectorAll('.mermaid svg');
         const svgSymbols = document.querySelectorAll('.svg-symbol');
-        logs.push(`\\n✓ 渲染完成: ${svgs.length} 个图表, ${svgSymbols.length} 个SVG符号`);
-        document.getElementById('status-content').textContent = logs.slice(-20).join('\n');
-      }, 3000);
+        const dual10Templates = document.querySelectorAll('[data-template="dual10"]');
+
+        logs.push(`\n✓ 渲染完成: ${svgs.length} 个图表`);
+        logs.push(`✓ SVG符号: ${svgSymbols.length} 个`);
+        logs.push(`✓ DUAL10模板: ${dual10Templates.length} 个`);
+        document.getElementById('status-content').textContent = logs.join('\n');
+      }, 2000);
     </script>
   </body>
 </html>

@@ -1,0 +1,155 @@
+<!-- QUAD08_UNIFIED_TEMPLATE: Universal 4x8 pin package (32 pins total) -->
+<svg viewBox="-58 -53 116 106" xmlns="http://www.w3.org/2000/svg" data-template="quad08">
+  <defs>
+    <style>
+      .body { stroke: #333; stroke-width: 1.5; fill: #f5f5dc; }
+      .pin { stroke: #333; stroke-width: 1.2; }
+      .pin-number { font-family: sans-serif; font-size: 6px; fill: #666; text-anchor: middle; }
+      .pin-dot { fill: #dc3545; opacity: 0; }
+      .marker { fill: #333; }
+      .thermal-pad { stroke: #333; stroke-width: 1; fill: #e0e0e0; }
+      .pin-name-anchor { fill: none; opacity: 0; }
+    </style>
+  </defs>
+
+  <!-- IC Body -->
+  <rect x="-32" y="-32" width="64" height="64" class="body" rx="2"/>
+  <!-- Pin 1 Marker -->
+  <circle cx="-24" cy="-27" r="2" class="marker"/>
+
+  <!-- Top Side Pins -->
+  <line x1="-28" y1="-38" x2="-28" y2="-32" class="pin" data-pin-id="0" data-pin-name="1"/>
+  <text x="-28" y="-41" class="pin-number">1</text>
+  <circle cx="-28" cy="-38" r="2" class="pin-dot" data-pin-id="0"/>
+  <circle cx="-28" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="1"/>
+  <line x1="-20" y1="-38" x2="-20" y2="-32" class="pin" data-pin-id="1" data-pin-name="2"/>
+  <text x="-20" y="-41" class="pin-number">2</text>
+  <circle cx="-20" cy="-38" r="2" class="pin-dot" data-pin-id="1"/>
+  <circle cx="-20" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="2"/>
+  <line x1="-12" y1="-38" x2="-12" y2="-32" class="pin" data-pin-id="2" data-pin-name="3"/>
+  <text x="-12" y="-41" class="pin-number">3</text>
+  <circle cx="-12" cy="-38" r="2" class="pin-dot" data-pin-id="2"/>
+  <circle cx="-12" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="3"/>
+  <line x1="-4" y1="-38" x2="-4" y2="-32" class="pin" data-pin-id="3" data-pin-name="4"/>
+  <text x="-4" y="-41" class="pin-number">4</text>
+  <circle cx="-4" cy="-38" r="2" class="pin-dot" data-pin-id="3"/>
+  <circle cx="-4" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="4"/>
+  <line x1="4" y1="-38" x2="4" y2="-32" class="pin" data-pin-id="4" data-pin-name="5"/>
+  <text x="4" y="-41" class="pin-number">5</text>
+  <circle cx="4" cy="-38" r="2" class="pin-dot" data-pin-id="4"/>
+  <circle cx="4" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="5"/>
+  <line x1="12" y1="-38" x2="12" y2="-32" class="pin" data-pin-id="5" data-pin-name="6"/>
+  <text x="12" y="-41" class="pin-number">6</text>
+  <circle cx="12" cy="-38" r="2" class="pin-dot" data-pin-id="5"/>
+  <circle cx="12" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="6"/>
+  <line x1="20" y1="-38" x2="20" y2="-32" class="pin" data-pin-id="6" data-pin-name="7"/>
+  <text x="20" y="-41" class="pin-number">7</text>
+  <circle cx="20" cy="-38" r="2" class="pin-dot" data-pin-id="6"/>
+  <circle cx="20" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="7"/>
+  <line x1="28" y1="-38" x2="28" y2="-32" class="pin" data-pin-id="7" data-pin-name="8"/>
+  <text x="28" y="-41" class="pin-number">8</text>
+  <circle cx="28" cy="-38" r="2" class="pin-dot" data-pin-id="7"/>
+  <circle cx="28" cy="-38" r="1" class="pin-name-anchor" data-pin-name-anchor="8"/>
+
+  <!-- Right Side Pins -->
+  <line x1="32" y1="-28" x2="38" y2="-28" class="pin" data-pin-id="8" data-pin-name="9"/>
+  <text x="41" y="-26" class="pin-number" text-anchor="start">9</text>
+  <circle cx="38" cy="-28" r="2" class="pin-dot" data-pin-id="8"/>
+  <circle cx="38" cy="-28" r="1" class="pin-name-anchor" data-pin-name-anchor="9"/>
+  <line x1="32" y1="-20" x2="38" y2="-20" class="pin" data-pin-id="9" data-pin-name="10"/>
+  <text x="41" y="-18" class="pin-number" text-anchor="start">10</text>
+  <circle cx="38" cy="-20" r="2" class="pin-dot" data-pin-id="9"/>
+  <circle cx="38" cy="-20" r="1" class="pin-name-anchor" data-pin-name-anchor="10"/>
+  <line x1="32" y1="-12" x2="38" y2="-12" class="pin" data-pin-id="10" data-pin-name="11"/>
+  <text x="41" y="-10" class="pin-number" text-anchor="start">11</text>
+  <circle cx="38" cy="-12" r="2" class="pin-dot" data-pin-id="10"/>
+  <circle cx="38" cy="-12" r="1" class="pin-name-anchor" data-pin-name-anchor="11"/>
+  <line x1="32" y1="-4" x2="38" y2="-4" class="pin" data-pin-id="11" data-pin-name="12"/>
+  <text x="41" y="-2" class="pin-number" text-anchor="start">12</text>
+  <circle cx="38" cy="-4" r="2" class="pin-dot" data-pin-id="11"/>
+  <circle cx="38" cy="-4" r="1" class="pin-name-anchor" data-pin-name-anchor="12"/>
+  <line x1="32" y1="4" x2="38" y2="4" class="pin" data-pin-id="12" data-pin-name="13"/>
+  <text x="41" y="6" class="pin-number" text-anchor="start">13</text>
+  <circle cx="38" cy="4" r="2" class="pin-dot" data-pin-id="12"/>
+  <circle cx="38" cy="4" r="1" class="pin-name-anchor" data-pin-name-anchor="13"/>
+  <line x1="32" y1="12" x2="38" y2="12" class="pin" data-pin-id="13" data-pin-name="14"/>
+  <text x="41" y="14" class="pin-number" text-anchor="start">14</text>
+  <circle cx="38" cy="12" r="2" class="pin-dot" data-pin-id="13"/>
+  <circle cx="38" cy="12" r="1" class="pin-name-anchor" data-pin-name-anchor="14"/>
+  <line x1="32" y1="20" x2="38" y2="20" class="pin" data-pin-id="14" data-pin-name="15"/>
+  <text x="41" y="22" class="pin-number" text-anchor="start">15</text>
+  <circle cx="38" cy="20" r="2" class="pin-dot" data-pin-id="14"/>
+  <circle cx="38" cy="20" r="1" class="pin-name-anchor" data-pin-name-anchor="15"/>
+  <line x1="32" y1="28" x2="38" y2="28" class="pin" data-pin-id="15" data-pin-name="16"/>
+  <text x="41" y="30" class="pin-number" text-anchor="start">16</text>
+  <circle cx="38" cy="28" r="2" class="pin-dot" data-pin-id="15"/>
+  <circle cx="38" cy="28" r="1" class="pin-name-anchor" data-pin-name-anchor="16"/>
+
+  <!-- Bottom Side Pins -->
+  <line x1="28" y1="32" x2="28" y2="38" class="pin" data-pin-id="16" data-pin-name="17"/>
+  <text x="28" y="46" class="pin-number">17</text>
+  <circle cx="28" cy="38" r="2" class="pin-dot" data-pin-id="16"/>
+  <circle cx="28" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="17"/>
+  <line x1="20" y1="32" x2="20" y2="38" class="pin" data-pin-id="17" data-pin-name="18"/>
+  <text x="20" y="46" class="pin-number">18</text>
+  <circle cx="20" cy="38" r="2" class="pin-dot" data-pin-id="17"/>
+  <circle cx="20" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="18"/>
+  <line x1="12" y1="32" x2="12" y2="38" class="pin" data-pin-id="18" data-pin-name="19"/>
+  <text x="12" y="46" class="pin-number">19</text>
+  <circle cx="12" cy="38" r="2" class="pin-dot" data-pin-id="18"/>
+  <circle cx="12" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="19"/>
+  <line x1="4" y1="32" x2="4" y2="38" class="pin" data-pin-id="19" data-pin-name="20"/>
+  <text x="4" y="46" class="pin-number">20</text>
+  <circle cx="4" cy="38" r="2" class="pin-dot" data-pin-id="19"/>
+  <circle cx="4" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="20"/>
+  <line x1="-4" y1="32" x2="-4" y2="38" class="pin" data-pin-id="20" data-pin-name="21"/>
+  <text x="-4" y="46" class="pin-number">21</text>
+  <circle cx="-4" cy="38" r="2" class="pin-dot" data-pin-id="20"/>
+  <circle cx="-4" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="21"/>
+  <line x1="-12" y1="32" x2="-12" y2="38" class="pin" data-pin-id="21" data-pin-name="22"/>
+  <text x="-12" y="46" class="pin-number">22</text>
+  <circle cx="-12" cy="38" r="2" class="pin-dot" data-pin-id="21"/>
+  <circle cx="-12" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="22"/>
+  <line x1="-20" y1="32" x2="-20" y2="38" class="pin" data-pin-id="22" data-pin-name="23"/>
+  <text x="-20" y="46" class="pin-number">23</text>
+  <circle cx="-20" cy="38" r="2" class="pin-dot" data-pin-id="22"/>
+  <circle cx="-20" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="23"/>
+  <line x1="-28" y1="32" x2="-28" y2="38" class="pin" data-pin-id="23" data-pin-name="24"/>
+  <text x="-28" y="46" class="pin-number">24</text>
+  <circle cx="-28" cy="38" r="2" class="pin-dot" data-pin-id="23"/>
+  <circle cx="-28" cy="38" r="1" class="pin-name-anchor" data-pin-name-anchor="24"/>
+
+  <!-- Left Side Pins -->
+  <line x1="-38" y1="28" x2="-32" y2="28" class="pin" data-pin-id="24" data-pin-name="25"/>
+  <text x="-41" y="30" class="pin-number" text-anchor="end">25</text>
+  <circle cx="-38" cy="28" r="2" class="pin-dot" data-pin-id="24"/>
+  <circle cx="-38" cy="28" r="1" class="pin-name-anchor" data-pin-name-anchor="25"/>
+  <line x1="-38" y1="20" x2="-32" y2="20" class="pin" data-pin-id="25" data-pin-name="26"/>
+  <text x="-41" y="22" class="pin-number" text-anchor="end">26</text>
+  <circle cx="-38" cy="20" r="2" class="pin-dot" data-pin-id="25"/>
+  <circle cx="-38" cy="20" r="1" class="pin-name-anchor" data-pin-name-anchor="26"/>
+  <line x1="-38" y1="12" x2="-32" y2="12" class="pin" data-pin-id="26" data-pin-name="27"/>
+  <text x="-41" y="14" class="pin-number" text-anchor="end">27</text>
+  <circle cx="-38" cy="12" r="2" class="pin-dot" data-pin-id="26"/>
+  <circle cx="-38" cy="12" r="1" class="pin-name-anchor" data-pin-name-anchor="27"/>
+  <line x1="-38" y1="4" x2="-32" y2="4" class="pin" data-pin-id="27" data-pin-name="28"/>
+  <text x="-41" y="6" class="pin-number" text-anchor="end">28</text>
+  <circle cx="-38" cy="4" r="2" class="pin-dot" data-pin-id="27"/>
+  <circle cx="-38" cy="4" r="1" class="pin-name-anchor" data-pin-name-anchor="28"/>
+  <line x1="-38" y1="-4" x2="-32" y2="-4" class="pin" data-pin-id="28" data-pin-name="29"/>
+  <text x="-41" y="-2" class="pin-number" text-anchor="end">29</text>
+  <circle cx="-38" cy="-4" r="2" class="pin-dot" data-pin-id="28"/>
+  <circle cx="-38" cy="-4" r="1" class="pin-name-anchor" data-pin-name-anchor="29"/>
+  <line x1="-38" y1="-12" x2="-32" y2="-12" class="pin" data-pin-id="29" data-pin-name="30"/>
+  <text x="-41" y="-10" class="pin-number" text-anchor="end">30</text>
+  <circle cx="-38" cy="-12" r="2" class="pin-dot" data-pin-id="29"/>
+  <circle cx="-38" cy="-12" r="1" class="pin-name-anchor" data-pin-name-anchor="30"/>
+  <line x1="-38" y1="-20" x2="-32" y2="-20" class="pin" data-pin-id="30" data-pin-name="31"/>
+  <text x="-41" y="-18" class="pin-number" text-anchor="end">31</text>
+  <circle cx="-38" cy="-20" r="2" class="pin-dot" data-pin-id="30"/>
+  <circle cx="-38" cy="-20" r="1" class="pin-name-anchor" data-pin-name-anchor="31"/>
+  <line x1="-38" y1="-28" x2="-32" y2="-28" class="pin" data-pin-id="31" data-pin-name="32"/>
+  <text x="-41" y="-26" class="pin-number" text-anchor="end">32</text>
+  <circle cx="-38" cy="-28" r="2" class="pin-dot" data-pin-id="31"/>
+  <circle cx="-38" cy="-28" r="1" class="pin-name-anchor" data-pin-name-anchor="32"/>
+</svg>
