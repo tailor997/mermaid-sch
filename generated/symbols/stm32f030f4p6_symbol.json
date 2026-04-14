@@ -1,0 +1,1186 @@
+[
+  {
+    "type": "source_component",
+    "source_component_id": "src_stm32",
+    "name": "U?",
+    "ftype": "simple_chip"
+  },
+  {
+    "type": "schematic_component",
+    "schematic_component_id": "sch_stm32",
+    "source_component_id": "src_stm32",
+    "center": {
+      "x": 0,
+      "y": 0
+    },
+    "size": {
+      "width": 4,
+      "height": 10
+    },
+    "rotation": 0,
+    "is_box_with_pins": false
+  },
+  {
+    "type": "schematic_rect",
+    "schematic_rect_id": "rect_stm32",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 0,
+      "y": 0
+    },
+    "width": 4,
+    "height": 10,
+    "rotation": 0,
+    "color": "rgb(132, 0, 0)",
+    "is_filled": true,
+    "fill_color": "rgb(255, 255, 194)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "text_stm32_name",
+    "text": "STM32F030F4P6",
+    "font_size": 0.35,
+    "position": {
+      "x": 0,
+      "y": 5
+    },
+    "rotation": 0,
+    "anchor": "bottom",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_circle",
+    "schematic_circle_id": "notch_stm32",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -1.7,
+      "y": 4.2
+    },
+    "radius": 0.15,
+    "color": "rgb(132, 0, 0)",
+    "is_filled": true,
+    "fill_color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p1",
+    "source_component_id": "src_stm32",
+    "name": "BOOT0",
+    "pin_number": 1
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p1",
+    "source_port_id": "src_stm32_p1",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": 4.5
+    },
+    "facing_direction": "left",
+    "pin_number": 1
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p1",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": 4.5,
+    "x2": -3,
+    "y2": 4.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p1",
+    "text": "BOOT0",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": 4.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p1",
+    "text": "1",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": 4.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p2",
+    "source_component_id": "src_stm32",
+    "name": "PF0/OSC_IN",
+    "pin_number": 2
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p2",
+    "source_port_id": "src_stm32_p2",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": 3.5
+    },
+    "facing_direction": "left",
+    "pin_number": 2
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p2",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": 3.5,
+    "x2": -3,
+    "y2": 3.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p2",
+    "text": "PF0/OSC_IN",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": 3.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p2",
+    "text": "2",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": 3.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p3",
+    "source_component_id": "src_stm32",
+    "name": "PF1/OSC_OUT",
+    "pin_number": 3
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p3",
+    "source_port_id": "src_stm32_p3",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": 2.5
+    },
+    "facing_direction": "left",
+    "pin_number": 3
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p3",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": 2.5,
+    "x2": -3,
+    "y2": 2.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p3",
+    "text": "PF1/OSC_O…",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": 2.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p3",
+    "text": "3",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": 2.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p4",
+    "source_component_id": "src_stm32",
+    "name": "NRST",
+    "pin_number": 4
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p4",
+    "source_port_id": "src_stm32_p4",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": 1.5
+    },
+    "facing_direction": "left",
+    "pin_number": 4
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p4",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": 1.5,
+    "x2": -3,
+    "y2": 1.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p4",
+    "text": "NRST",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": 1.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p4",
+    "text": "4",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": 1.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p5",
+    "source_component_id": "src_stm32",
+    "name": "VDDA",
+    "pin_number": 5
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p5",
+    "source_port_id": "src_stm32_p5",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": 0.5
+    },
+    "facing_direction": "left",
+    "pin_number": 5
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p5",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": 0.5,
+    "x2": -3,
+    "y2": 0.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p5",
+    "text": "VDDA",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": 0.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p5",
+    "text": "5",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": 0.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p6",
+    "source_component_id": "src_stm32",
+    "name": "PA0",
+    "pin_number": 6
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p6",
+    "source_port_id": "src_stm32_p6",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": -0.5
+    },
+    "facing_direction": "left",
+    "pin_number": 6
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p6",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": -0.5,
+    "x2": -3,
+    "y2": -0.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p6",
+    "text": "PA0",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": -0.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p6",
+    "text": "6",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": -0.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p7",
+    "source_component_id": "src_stm32",
+    "name": "PA1",
+    "pin_number": 7
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p7",
+    "source_port_id": "src_stm32_p7",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": -1.5
+    },
+    "facing_direction": "left",
+    "pin_number": 7
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p7",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": -1.5,
+    "x2": -3,
+    "y2": -1.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p7",
+    "text": "PA1",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": -1.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p7",
+    "text": "7",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": -1.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p8",
+    "source_component_id": "src_stm32",
+    "name": "PA2",
+    "pin_number": 8
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p8",
+    "source_port_id": "src_stm32_p8",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": -2.5
+    },
+    "facing_direction": "left",
+    "pin_number": 8
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p8",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": -2.5,
+    "x2": -3,
+    "y2": -2.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p8",
+    "text": "PA2",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": -2.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p8",
+    "text": "8",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": -2.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p9",
+    "source_component_id": "src_stm32",
+    "name": "PA3",
+    "pin_number": 9
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p9",
+    "source_port_id": "src_stm32_p9",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": -3.5
+    },
+    "facing_direction": "left",
+    "pin_number": 9
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p9",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": -3.5,
+    "x2": -3,
+    "y2": -3.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p9",
+    "text": "PA3",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": -3.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p9",
+    "text": "9",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": -3.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p10",
+    "source_component_id": "src_stm32",
+    "name": "PA4",
+    "pin_number": 10
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p10",
+    "source_port_id": "src_stm32_p10",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": -3,
+      "y": -4.5
+    },
+    "facing_direction": "left",
+    "pin_number": 10
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p10",
+    "schematic_component_id": "sch_stm32",
+    "x1": -2,
+    "y1": -4.5,
+    "x2": -3,
+    "y2": -4.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p10",
+    "text": "PA4",
+    "font_size": 0.22,
+    "position": {
+      "x": -1.85,
+      "y": -4.5
+    },
+    "rotation": 0,
+    "anchor": "left",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p10",
+    "text": "10",
+    "font_size": 0.18,
+    "position": {
+      "x": -3.1,
+      "y": -4.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_right",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p11",
+    "source_component_id": "src_stm32",
+    "name": "PA5",
+    "pin_number": 11
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p11",
+    "source_port_id": "src_stm32_p11",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": 4.5
+    },
+    "facing_direction": "right",
+    "pin_number": 11
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p11",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": 4.5,
+    "x2": 3,
+    "y2": 4.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p11",
+    "text": "PA5",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": 4.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p11",
+    "text": "11",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": 4.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p12",
+    "source_component_id": "src_stm32",
+    "name": "PA6",
+    "pin_number": 12
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p12",
+    "source_port_id": "src_stm32_p12",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": 3.5
+    },
+    "facing_direction": "right",
+    "pin_number": 12
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p12",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": 3.5,
+    "x2": 3,
+    "y2": 3.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p12",
+    "text": "PA6",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": 3.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p12",
+    "text": "12",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": 3.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p13",
+    "source_component_id": "src_stm32",
+    "name": "PA7",
+    "pin_number": 13
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p13",
+    "source_port_id": "src_stm32_p13",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": 2.5
+    },
+    "facing_direction": "right",
+    "pin_number": 13
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p13",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": 2.5,
+    "x2": 3,
+    "y2": 2.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p13",
+    "text": "PA7",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": 2.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p13",
+    "text": "13",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": 2.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p14",
+    "source_component_id": "src_stm32",
+    "name": "PB1",
+    "pin_number": 14
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p14",
+    "source_port_id": "src_stm32_p14",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": 1.5
+    },
+    "facing_direction": "right",
+    "pin_number": 14
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p14",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": 1.5,
+    "x2": 3,
+    "y2": 1.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p14",
+    "text": "PB1",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": 1.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p14",
+    "text": "14",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": 1.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p15",
+    "source_component_id": "src_stm32",
+    "name": "VSS",
+    "pin_number": 15
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p15",
+    "source_port_id": "src_stm32_p15",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": 0.5
+    },
+    "facing_direction": "right",
+    "pin_number": 15
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p15",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": 0.5,
+    "x2": 3,
+    "y2": 0.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p15",
+    "text": "VSS",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": 0.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p15",
+    "text": "15",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": 0.65
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p16",
+    "source_component_id": "src_stm32",
+    "name": "VDD",
+    "pin_number": 16
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p16",
+    "source_port_id": "src_stm32_p16",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": -0.5
+    },
+    "facing_direction": "right",
+    "pin_number": 16
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p16",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": -0.5,
+    "x2": 3,
+    "y2": -0.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p16",
+    "text": "VDD",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": -0.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p16",
+    "text": "16",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": -0.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p17",
+    "source_component_id": "src_stm32",
+    "name": "PA9",
+    "pin_number": 17
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p17",
+    "source_port_id": "src_stm32_p17",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": -1.5
+    },
+    "facing_direction": "right",
+    "pin_number": 17
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p17",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": -1.5,
+    "x2": 3,
+    "y2": -1.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p17",
+    "text": "PA9",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": -1.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p17",
+    "text": "17",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": -1.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p18",
+    "source_component_id": "src_stm32",
+    "name": "PA10",
+    "pin_number": 18
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p18",
+    "source_port_id": "src_stm32_p18",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": -2.5
+    },
+    "facing_direction": "right",
+    "pin_number": 18
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p18",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": -2.5,
+    "x2": 3,
+    "y2": -2.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p18",
+    "text": "PA10",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": -2.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p18",
+    "text": "18",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": -2.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p19",
+    "source_component_id": "src_stm32",
+    "name": "PA13",
+    "pin_number": 19
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p19",
+    "source_port_id": "src_stm32_p19",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": -3.5
+    },
+    "facing_direction": "right",
+    "pin_number": 19
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p19",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": -3.5,
+    "x2": 3,
+    "y2": -3.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p19",
+    "text": "PA13",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": -3.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p19",
+    "text": "19",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": -3.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  },
+  {
+    "type": "source_port",
+    "source_port_id": "src_stm32_p20",
+    "source_component_id": "src_stm32",
+    "name": "PA14",
+    "pin_number": 20
+  },
+  {
+    "type": "schematic_port",
+    "schematic_port_id": "sch_stm32_p20",
+    "source_port_id": "src_stm32_p20",
+    "schematic_component_id": "sch_stm32",
+    "center": {
+      "x": 3,
+      "y": -4.5
+    },
+    "facing_direction": "right",
+    "pin_number": 20
+  },
+  {
+    "type": "schematic_line",
+    "schematic_line_id": "line_stm32_p20",
+    "schematic_component_id": "sch_stm32",
+    "x1": 2,
+    "y1": -4.5,
+    "x2": 3,
+    "y2": -4.5,
+    "color": "rgb(132, 0, 0)",
+    "is_dashed": false
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "label_stm32_p20",
+    "text": "PA14",
+    "font_size": 0.22,
+    "position": {
+      "x": 1.85,
+      "y": -4.5
+    },
+    "rotation": 0,
+    "anchor": "right",
+    "color": "rgb(0, 100, 100)"
+  },
+  {
+    "type": "schematic_text",
+    "schematic_text_id": "num_stm32_p20",
+    "text": "20",
+    "font_size": 0.18,
+    "position": {
+      "x": 3.1,
+      "y": -4.35
+    },
+    "rotation": 0,
+    "anchor": "bottom_left",
+    "color": "rgb(169, 0, 0)"
+  }
+]

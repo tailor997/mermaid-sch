@@ -1,0 +1,20 @@
+{
+  "name": "stm32-autoroute-demo",
+  "version": "1.0.0",
+  "description": "STM32F030F4P6 minimum system demo with tscircuit automatic routing",
+  "type": "module",
+  "scripts": {
+    "export": "tsx scripts/export.ts",
+    "dev": "PATH=$HOME/.bun/bin:$PATH tsci dev",
+    "build:circuit": "tsci export"
+  },
+  "dependencies": {
+    "@tscircuit/core": "latest",
+    "circuit-to-svg": "latest"
+  },
+  "devDependencies": {
+    "@tscircuit/cli": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

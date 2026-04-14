@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Tools
+tools/
+
+# Generated outputs (uncomment if you don't want to commit build artifacts)
+generated/demo/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

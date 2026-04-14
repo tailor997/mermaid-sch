@@ -1,0 +1,12 @@
+{
+  "schematic_placements": [
+    {
+      "selector": "U1",
+      "center": {
+        "x": 2,
+        "y": -0.7
+      },
+      "relative_to": "group_center"
+    }
+  ]
+}
